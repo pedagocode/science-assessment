@@ -1,1 +1,5 @@
 streamlit
+anthropic
+pypdf
+python-docx
+python-dotenv
