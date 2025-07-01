@@ -1,0 +1,784 @@
+# CONTEXT #
+You are creating a set of science assessment items for {grade}, grounded in the 3D NGSS framework (DCI, SEP, CCC) and tailored to the Depth of Knowledge (DOK) levels appropriate to {grade}.
+
+1. References (for prompt context only)
+1.1. 3D NGSS Reference
+{ngss_ref}
+1.2. DOK Levels Reference
+{dok_ref}
+
+2. Content Hierarchy (in order of priority)
+2.1. Standards: {standards}
+2.2. What students will do (Will-Do): {will_do}
+
+3. Preliminary Steps
+3.1. Review the Standards, What Students Will Do, and Unit Overview.
+3.2. Write a summary of how the Standards and Unit Overview determine what students will do.
+3.3. From the Standards and What Students Will Do, write a list of skills needed.
+3.3.1. Show how each skill helps learners master the standard.
+3.3.2. Indicate which NGSS dimensions (DCI, SEP, CCC) each skill addresses.
+3.3.3. Identify the DOK level each skill reflects.
+
+# FORMATTING REQUIREMENTS #
+1. Item Numbering and Identification
+1.1. Number each item sequentially: “Item X:”
+1.2. For each item, specify item type (MC, MS, TE, Cluster, EBSR, CR) and place it after the item number.
+1.3. Immediately after the item type, state the full standard code that aligns with the item.
+
+2. NGSS Dimensions
+2.1. List the DCI (code and description), SEP (code and short name), and CCC (code and short name) addressed by the item.
+2.2. For each dimension, provide a justification:
+2.2.1. SEP: List the SEP code and short name first, then directly under it present a justification for why that SEP is reflected in the cognitive work of the item.
+2.2.2. CCC: List the CCC code and short name first, then directly under it present a justification for how this CCC shapes the reasoning required to answer the item.
+
+3. DOK Level
+3.1. State the DOK level (1, 2, 3, or 4, as appropriate) explicitly.
+3.2. Provide a justification for why this DOK level fits the cognitive demand of the task.
+
+4. Stimulus and Visuals
+4.1. Frame each item in a real-world, observable phenomenon or scenario whenever possible.
+4.2. If a visual (graph, model, table, diagram, picture) is used, insert a [Visual Description:] tag immediately after the stimulus. Briefly describe the image or graph in 1-2 clear lines.
+
+5. Question Stem
+5.1. Write a clear, single question that targets a key concept or reasoning process from the standard.
+
+6. Answer Choices
+6.1. For MC: Always provide exactly four answer choices, labeled A–D.
+6.2. For MS: Provide five choices, labeled A–E, with at least two correct.
+6.3. For TE: Describe the interactive format and expected selection or placement logic.
+
+7. Answer Format and Rationales (All MC/MS/TE Items)
+7.1. Under the heading Answer:, list the correct letter(s).
+7.2. Under the heading Rationale for correct choice(s): list each correct option, prefixed by its letter, then give the detailed justification.
+7.3. Under the heading Rationale for incorrect choice(s): list each incorrect option, prefixed by its letter, then give the detailed justification.
+7.4. Every answer option must have a rationale, and no rationale should be omitted.
+7.5. Do NOT include the words ‘Correct.’ or ‘Incorrect.’ before any rationale statement.
+
+8. Constructed Response (CR) Items
+8.1. Frame the prompt around a real-world phenomenon.
+8.2. Require a multi-part Claim-Evidence-Reasoning (CER) response.
+8.3. Provide a model student answer that fully addresses claim, evidence, and reasoning.
+8.4. Use the explicit CR rubric as provided in the guidelines.
+8.5. Do not include answer choice letters; instead, present the full text model response.
+
+9. Consistency and Repetition
+9.1. Every item must independently meet these formatting rules (numbering, metadata, justification, answer format, rationales)—do not apply rules globally.
+9.2. For cluster or EBSR formats, each item must include its own full metadata and explicit justifications for DCI, SEP, CCC, and DOK—not just codes or labels.
+
+10. Prohibited Practices
+10.1. Do not include meta-commentary or process explanations in the final output.
+10.2. Do not omit any required metadata, justifications, or answer rationales.
+
+**Example of required structure for a single MC item:Item X: MC: [Standard Code]
+DCI: [Code and Description]
+SEP: [Code and Short Name]
+Justification: [Why this SEP is required for the thinking in this task]
+CCC: [Code and Short Name]
+Justification: [How this CCC shapes the reasoning]
+DOK Level: [Number]
+Justification: [Why this DOK level is appropriate]
+
+Stimulus: [Scenario]
+[Visual Description: (If image is included)]
+
+Question stem: [Clear, single question]
+
+A) [Option]
+B) [Option]
+C) [Option]
+D) [Option]
+
+Answer: [Letter]
+Rationale for correct choice(s):
+[Letter]) [Explanation]
+Rationale for incorrect choice(s):
+[Letter]) [Explanation]
+[Continue for every option]
+
+# FORMATTING REQUIREMENTS FOR MULTI-PART ITEMS #
+1. Metadata Requirements for Multi-Part Items
+1.1. For multi-part item types (e.g., Cluster, EBSR):
+1.1.1. Repeat the full metadata formatting — including Standard, DCI, SEP, CCC, and DOK — under each individual item within the set.
+1.1.2. Do not apply one justification to all parts unless the prompt explicitly instructs otherwise.
+2. Cluster Generation Workflow for Complete 8-Item Output
+2.1. To ensure a complete and well-formatted 8-item cluster, always use a two-step workflow:
+2.1.1. First, generate and fully format Items 1–4 of the cluster, using the specified anchoring phenomenon, standards, and formatting rules.
+2.1.2. Next, in a new prompt, generate and fully format Items 5–8 of the same cluster, continuing the numbering, referencing the same anchoring phenomenon and instructional context.
+2.1.3. This is Batch {batch_num}. Generate Items {item_start} to {item_end} only. Do NOT generate Items beyond {item_end}.
+2.1.4. For both batches (1–4, 5–8), maintain all required cluster rules:
+2.1.4.1. Strict item numbering (Item 1–Item 8)
+2.1.4.2. Generate fully formatted individual items
+2.1.4.3. Variety in CCC selection and item types (as cluster rules specify)
+2.1.5. Do not include a summary or conclusion after Item 8.
+
+# FORMATTING REQUIREMENTS FOR CONSTRUCTED RESPONSE (CR) ITEMS #
+1. Scoring Rubric Requirements
+1.1. Scoring Format Instructions (To the LLM)
+1.2.1.1. Generate a 4-row by 6-column rubric table that human scorers can use to evaluate student CER responses.
+1.2.1.2. The rows must be:
+Claim
+Evidence
+Reasoning
+1.2.1.3. The columns must be:
+Exceeding (4)
+Meeting (3)
+Developing (2)
+Emerging (1)
+No Response (0)
+
+1.2.1.4. Each cell must include performance descriptors that reference the quality of scientific reasoning and the integration of NGSS dimensions (DCI, SEP, CCC) where appropriate.
+
+1.2.1.5. Before the table, include the following output text for human evaluators:
+
+Use the rubric table below to evaluate CER responses. Each row addresses one CER component (Claim, Evidence, Reasoning) and integrates alignment to NGSS dimensions (DCI, SEP, CCC). Score using the tiered descriptors from 4 (Exceeding) to 0 (No Response):
+
+1.2.2. Scoring Rubric Table (To be generated by the LLM)
+# Constructed Response Rubric Table
+
+| Component  | Exceeding (4) | Meeting (3) | Developing (2) | Emerging (1) | No Response (0) |
+|------------|---------------|-------------|----------------|--------------|-----------------|
+| **Claim** | Makes a scientifically accurate and specific claim that directly answers the question and aligns with the DCI. | Makes an accurate claim that answers the question, generally aligned to the DCI. | Makes a vague or partially correct claim; DCI alignment is weak or incomplete. | Makes an inaccurate, irrelevant, or confused claim with little to no alignment to the DCI. | No claim provided or off-topic response. |
+| **Evidence** | Provides multiple, specific, and relevant pieces of data or observations from the stimulus or background knowledge. Evidence supports the claim and shows attention to patterns or relationships (CCC). | Provides at least one appropriate piece of evidence that supports the claim; some connection to data patterns or context is evident. | Provides evidence that is weak, vague, or only loosely connected to the claim; CCC lens may be missing or misapplied. | Provides minimal, incorrect, or unrelated evidence. No conceptual framing is apparent. | No evidence provided. |
+| **Reasoning** | Thoroughly explains how the evidence supports the claim using appropriate science ideas (DCI) and clearly articulates the reasoning process (SEP). Explicitly connects to a CCC (e.g., cause and effect, systems). | Explains the connection between claim and evidence using basic science ideas. Reasoning may mention CCC or reflect a reasoning process but lacks depth. | Attempts reasoning, but the connection between evidence and claim is unclear, incomplete, or scientifically inaccurate. | Reasoning is missing or incoherent; explanation lacks science content or logic. | No reasoning provided. |
+
+# ITEM CREATION GUIDELINES #
+1. Purpose and Transfer Focus
+1.1. Assessment items must measure transfer of knowledge, not direct recall.
+1.1.1. The goal is to evaluate how students apply their understanding in novel contexts.
+1.1.2. Items should be designed to reflect this purpose from the outset.
+
+2. Item Quantity and Type
+2.1. Generate exactly {num_items} items of type {item_type}.
+
+3. Science Context and Accessibility Requirements
+3.1. All items must meet the following criteria:
+3.1.1. Be solvable with the information provided.
+3.1.2. Be appropriate for the reading level of the specified grade.
+3.1.3. Be grounded in real-world, observable phenomena or puzzling events that students might encounter.
+3.1.3.1. Even standalone items benefit from brief, scenario-based framing that mirrors how science appears in everyday life.
+
+4. Dimension Alignment Requirements
+4.1. Each item must meet the following alignment expectations:
+4.1.1. Strongly address the Disciplinary Core Idea (DCI).
+4.1.2. Include at least one relevant Science and Engineering Practice (SEP) or Crosscutting Concept (CCC).
+4.1.3. Align first to Standards, then to What Students Will Do (Will-Do).
+4.1.3.1. (Will-Do) will inform item design
+
+5. Justification for SEP, CCC, and DOK
+5.1. For each item, provide explicit justifications for the selected SEP, CCC, and Depth of Knowledge (DOK) level.
+5.1.1. Justifications must explain why each dimension is required based on the student's thinking or action in the task.
+5.1.2. If the correlation between the selected SEP/CCC/DOK and the item is weak, the item should be revised for stronger alignment.
+
+# ITEM TYPES #
+1. Multiple Choice (MC)
+1.1. Structural Requirements
+1.1.1. Answer Choices:
+1.1.1.1. One correct answer from four (A–D), each on its own line.
+1.1.2. Stimulus Design:
+1.1.2.1. Frame the item around a real-world phenomenon, puzzling event, or simple, observable scenario whenever possible. This supports NGSS-aligned reasoning and elicits transfer-level thinking.
+1.1.2.2. Do NOT copy, reuse, or closely paraphrase the model exemplars. Use new, creative, and grade-appropriate real-world phenomena for every item. Each stimulus must be unique, original, and relevant to the standard and DCI.
+1.1.3. Visuals:
+1.1.3.1. If using a graph, table, model, or image, insert a [Visual Description:] label after the stimulus and before the stem. Describe the visual clearly and succinctly.
+1.1.4. Question Stem Design:
+1.1.4.1. Ask a clear, single question that targets the key concept being assessed. Avoid cueing the correct answer through wording or structure.
+1.2 Cognitive and Instructional Alignment
+1.2.1. DOK Levels:
+1.2.1.1. Items may range from DOK Level 1 to 3, depending on the complexity of student reasoning. Select the DOK level that reflects the cognitive demand of the task.
+1.2.1.1.1. DOK 1: Recall, identification, labeling
+1.2.1.1.2. DOK 2: Classifying, interpreting patterns, selecting evidence
+1.2.1.1.3. DOK 3: Explaining relationships, justifying claims, evaluating evidence
+1.2.1.2. Note: No more than 20% of total MC items should be written at DOK 1.
+1.2.2. Instructional and Dimensional Alignment:
+1.2.2.1. Must align to one submitted Standard (full code)
+1.2.2.2. Must address the DCI and at least one of SEP or CCC
+1.2.3. Transfer Focus:
+1.2.3.1. Items must assess reasoning or application, not direct recall of phrases from the standard or (Will-Do)
+1.3. Justification and Metadata Formatting
+1.3.1. Use the following format exactly:
+1.3.1.1. Item X: MC: [Standard Code]
+1.3.1.2. DCI: [DCI Code and Description]
+1.3.1.3. SEP: [SEP Code and Short Name]
+1.3.1.3.1. Justification: [Why this SEP reflects student thinking]
+1.3.1.4. CCC: [CCC Code and Short Name]
+1.3.1.4.1. Justification: [How this CCC shapes reasoning]
+1.3.1.5. DOK Level: [1–3]
+1.3.1.5.1. Justification: [Why this DOK level fits the item’s cognitive demand]
+1.3.2. Visual and Interpretation Notes:
+1.3.2.1. Include [Visual Description:] between the stimulus and question stem if a visual is used.
+1.3.2.2. If using a model or diagram, prompt students to interpret, apply, or evaluate it based on the task.
+1.3.2.3. Repeat this full metadata format for each item.
+1.4. Distractor Design Criteria
+1.4.1. Correct Answer:
+1.4.1.1. Must be scientifically valid.
+1.4.1.2. Must maintain internal coherence to the stimulus and align with the SEP or CCC being assessed
+1.4.2. Distractor Requirements:
+1.4.2.1. Represent common misconceptions, misapplications of SEPs/CCCs, or superficially plausible but incorrect reasoning.
+1.4.2.2. Avoid obviously incorrect or irrelevant distractors.
+1.4.2.3. When possible, base distractors on anticipated student errors or instructional data.
+1.5. Embedded Model Exemplar Use
+1.5.1. Refer to the # MODEL EXEMPLARS # section for:
+1.5.1.1. Examples of stimulus and question stem phrasing
+1.5.1.2. Appropriate visual description formatting
+1.5.1.3. Strong SEP/CCC/DOK justification language
+1.5.1.4. Rigor-appropriate distractor rationales
+1.6. Answer Formatting Reminder (for MC items)
+1.6.1. Follow structure from Section 7: # ANSWER FORMAT REQUIREMENTS #
+1.6.1.1. Begin with: Answer: [correct letter]
+1.6.1.2. Then include:
+1.6.1.2.1. Rationale for correct choice(s):
+1.6.1.2.2. Rationale for incorrect choice(s):
+1.6.1.3. Provide a rationale for every option. Describe how each correct and incorrect choice supports or misrepresents scientific reasoning, and maintain consistency across all items.
+
+2. Multiple Select (MS)
+2.1. Structural Requirements
+2.1.1. Answer Format:
+2.1.1.1. Provide five answer options (A–E), each on its own line.
+2.1.1.2. There must be a minimum of two and a maximum of four correct answers.
+2.1.1.3. Students may receive partial credit based on the number of correct options selected and incorrect options avoided.
+2.1.2. Stimulus Design:
+2.1.2.1. Ground the stimulus in a real-world, observable, or puzzling phenomenon that supports 3D reasoning.
+2.1.2.2. Do NOT copy, reuse, or closely paraphrase the model exemplars. Use new, creative, and grade-appropriate real-world phenomena for every item. Each stimulus must be unique, original, and relevant to the standard and DCI.
+2.1.2.3. Allow for headers, embedded explanations, or scenario-based frames when contextually helpful.
+2.1.2.4. Avoid abstract or decontextualized phrasing—anchor student thinking in relevant science applications.
+2.1.3. Visuals:
+2.1.3.1. If using graphs, diagrams, or models, include a [Visual Description:] tag immediately after the stimulus and before the question stem.
+2.1.3.2. Visuals should meaningfully support the reasoning task (e.g., interpreting data, identifying patterns, linking structure to function).
+2.1.4. Question Stem Design:
+2.1.4.1. Must clearly prompt students to select all correct responses based on the stimulus.
+2.1.4.2. Use precise phrasing such as:
+2.1.4.2.1. “Select all correct statements that are supported by the model.”
+2.1.4.2.2. “Which of the following pieces of evidence support the explanation?”
+2.2. Cognitive and Instructional Alignment
+2.2.1. DOK Levels:
+2.2.1.1. Items may range from DOK Level 2 to 3, depending on the complexity and integration of reasoning across multiple options.
+2.2.1.1.1. DOK 2: Identifying valid statements, interpreting data, comparing options
+2.2.1.1.2. DOK 3: Synthesizing evidence, evaluating multiple ideas, reasoning across statements
+2.2.1.2. Note: Do not design MS items at DOK 1. The format requires layered reasoning.
+2.2.2. Instructional and Dimensional Alignment:
+2.2.2.1. Must align to one submitted Standard (full code).
+2.2.2.2. Must address the DCI and at least one of SEP or CCC.
+2.2.2.3. Items must reflect NGSS 3D integration, not isolated fact recall.
+2.2.3. Transfer Emphasis:
+2.2.3.1. Design items to assess a student's ability to apply knowledge in context-dependent ways. 
+2.2.3.2. Design for application, pattern recognition, evidence evaluation, or model interpretation, not recall.
+2.3. Justification and Metadata Formatting
+2.3.1. Use the following format exactly:
+2.3.1.1. Item X: MS: [Standard Code]
+2.3.1.2. DCI: [DCI Code and Description]
+2.3.1.3. SEP: [SEP Code and Short Name]
+2.3.1.3.1. Justification: [Why this SEP reflects student thinking]
+2.3.1.4. CCC: [CCC Code and Short Name]
+2.3.1.4.1. Justification: [How this CCC shapes reasoning]
+2.3.1.5. DOK Level: [2 or 3]
+2.3.1.5.1. Justification: [Why this DOK level fits the item’s cognitive demand]
+2.3.2. Visual and Interpretation Notes:
+2.3.2.1. Include [Visual Description:] between the stimulus and question stem if a visual is used.
+2.3.2.2. If using a model or diagram, prompt students to interpret, apply, or evaluate it based on the task.
+2.3.2.3. Repeat this full metadata format for each item.
+2.4. Distractor Design Criteria
+2.4.1. Correct Answers:
+2.4.1.1. Each must reflect a distinct, evidence-backed or conceptually valid claim.
+2.4.1.2. Avoid redundancy between correct options.
+2.4.2. Distractors (Incorrect Options):
+2.4.2.1. Must reflect realistic misconceptions, incomplete reasoning, or plausible but incorrect interpretations.
+2.4.2.2. Each should be instructional — revealing common student misunderstandings.
+2.4.3. Rationales Required:
+2.4.3.1. Provide a rationale for each answer option, including:
+2.4.3.1.1. Why correct options are valid
+2.4.3.1.2. Why incorrect options are misleading, incorrect, or based on flawed reasoning
+2.5. Model-Based Reasoning (When Applicable)
+2.5.1. If referencing a model, ensure students must interpret or apply the model meaningfully. For example:
+2.5.1.1. “Select all statements that correctly explain the relationship shown in the diagram.”
+2.6. Embedded Model Exemplar Use
+2.6.1. Refer to the # MODEL EXEMPLARS # section for:
+2.6.1.1. Examples of stimulus and question stem phrasing
+2.6.1.2. Appropriate visual description formatting
+2.6.1.3. Strong SEP/CCC/DOK justification language
+2.6.1.4. Rigor-appropriate distractor rationales
+2.7. Answer Formatting Reminder (for MS items)
+2.7.1. Follow structure from Section 7: # ANSWER FORMAT REQUIREMENTS #
+2.7.1.1. Begin with: Answer: [correct letter(s)]
+2.7.1.2. Then include:
+2.7.1.2.1. Rationale for correct choice(s):
+2.7.1.2.2. Rationale for incorrect choice(s):
+2.7.1.3. Provide a rationale for every option. Describe how each correct and incorrect choice supports or misrepresents scientific reasoning, and maintain consistency across all items.
+
+3. Technology Enhanced (TE)
+3.1. Structural Requirements
+3.1.1. Item Types. TE items may include, but are not limited to:
+3.1.1.1. Drag-and-drop
+3.1.1.2. Hot-spot (click to identify)
+3.1.1.3. Inline choice (dropdowns)
+3.1.1.4. Graphing or model construction tasks
+3.1.2. Functionality Guidelines:
+3.1.2.1. Technology use must be purposeful. Do not use interactive formats simply for novelty.
+3.1.2.2. The technology feature must enhance the scientific reasoning students must perform.
+3.1.2.3. Students should engage in authentic tasks such as:
+3.1.2.3.1. Classifying evidence, mapping models, selecting cause-effect pathways, interpreting spatial/temporal relationships.
+3.1.3. Stimulus Design:
+3.1.3.1. Frame the item around a real-world, puzzling, or observable phenomenon that creates a need to engage in science practices.
+3.1.3.3. Do NOT copy, reuse, or closely paraphrase the model exemplars. Use new, creative, and grade-appropriate real-world phenomena for every item. Each stimulus must be unique, original, and relevant to the standard and DCI.
+3.1.3.2. May include multiple paragraphs, a model, or a progression of evidence.
+3.1.4. Visuals:
+3.1.4.1. When visuals are used (e.g., diagrams, tables, models, maps), include a [Visual Description:] tag immediately after the stimulus and before the student prompt.
+3.1.4.2. Visuals must directly support student reasoning—not just decorate the prompt.
+3.1.5. Question Stem Design:
+3.1.5.1. Clearly state the task students must complete using the interactive elements.
+3.1.5.2. Use directive, specific language that aligns with the interaction type. Examples include:
+3.1.5.2.1. Drag-and-Drop / Classification Tasks
+3.1.5.2.1.1. “Drag each label to the correct location on the diagram.”
+3.1.5.2.1.2. “Classify each variable into the correct category.”
+3.1.5.2.2. Hot Spot (Click to Identify)
+3.1.5.2.2.1. “Click on the part of the system that is most responsible for…”
+3.1.5.2.2.2. “Select the area that shows the greatest rate of change.”
+3.1.5.2.3. Dropdown / Inline Choice
+3.1.5.2.3.1. “Choose the correct option from each dropdown to complete the explanation.”
+3.1.5.2.3.2. “Select the correct response to complete each sentence.”
+3.1.5.2.4. Graphing or Model Construction
+3.1.5.2.4.1. “Construct a graph that shows the relationship between X and Y.”
+3.1.5.2.4.2. “Place each component in the correct location to build a model that explains the observed phenomenon.”
+3.1.5.2.4.3. “Use the graphing tool to plot the data points and draw a line of best fit.”
+3.1.5.3. Avoid vague or open-ended stems. The interaction should have a clear expected outcome aligned with a key.
+3.2. Cognitive and Instructional Alignment
+3.2.1. DOK Levels
+3.2.1.1. Items may range from DOK Level 2 to 4, depending on the interaction design and reasoning required. Choose the level that best reflects the depth of thinking needed to engage with the interactive elements.
+3.2.1.1.1. DOK 2: Classifying, identifying features, selecting evidence from a visual
+3.2.1.1.2. DOK 3: Interpreting data, drawing conclusions, constructing an explanation based on a model
+3.2.1.1.3. DOK 4: Constructing a graph from raw data, applying the graph to a new context, evaluating claims using multiple visuals or models
+3.2.2. Instructional and Dimensional Alignment:
+3.2.2.1. Must align to one submitted Standard (full code).
+3.2.2.2. Must strongly address the DCI, and at least one of either SEP or CCC.
+3.2.2.3. Must reflect 3D NGSS integration and emphasize student action grounded in science practices.
+3.2.3. Transfer Emphasis:
+3.2.3.1. TE items should require students to apply knowledge and reasoning in novel or interactive contexts.
+3.2.3.2. Avoid reformatting traditional multiple-choice into drag-and-drop unless the interactivity deepens the reasoning required.
+3.3. Justification and Metadata Formatting
+3.3.1. Use the following format exactly:
+3.3.1.1. Item X: TE - [Type of TE]: [Standard Code]  
+3.3.1.2. DCI: [DCI Code and Description]
+3.3.1.3. SEP: [SEP Code and Short Name]
+3.3.1.3.1. Justification: [Why this SEP reflects student thinking]
+3.3.1.4. CCC: [CCC Code and Short Name]
+3.3.1.4.1. Justification: [How this CCC shapes reasoning]
+3.3.1.5. DOK Level: [2-4]
+3.3.1.5.1. Justification: [Why this DOK level fits the item’s cognitive demand]
+3.3.2. Visual and Interpretation Notes:
+3.3.2.1. Include [Visual Description:] between the stimulus and question stem if a visual is used.
+3.3.2.2. If using a model or diagram, prompt students to interpret, apply, or evaluate it based on the task.
+3.3.2.3. Repeat this full metadata format for each item.
+3.3.3 Repetition Reminder for Multi-Part Structure
+3.3.3.1 Repeat this full metadata format for each type in the TE set.
+3.3.3.2 Do not apply metadata globally across items unless explicitly instructed.
+3.4. Distractor Design Criteria
+3.4.1. Correct Answers
+3.4.1.1. The correct answer(s) must be scientifically valid. (Applies to all TE item types)
+3.4.1.2. Correct answers must maintain internal coherence and align with the SEP or CCC being assessed. (Applies to all TE item types)
+3.4.1.3. For technology-enhanced formats with a verifiable key (e.g., drag-and-drop, hot spot, inline choice):
+3.4.1.3.1. Avoid open-ended interactions that lack a defined correct response model.
+3.4.1.4. For graphing or model construction tasks:
+3.4.1.4.1. Include a description of the model student response that defines what the graph, structure, or layout should look like.
+3.4.2. Distractors (Incorrect Options)
+3.4.2.1. Distractors must reflect scientifically plausible misconceptions or reasoning errors that students might make when interpreting the stimulus, engaging with a model, or applying a rule or pattern. These include:  
+3.4.2.1.1. Misconceptions common in instruction (e.g., confusing cause with effect)
+3.4.2.1.2. Incomplete reasoning paths (e.g., partially correct classification)
+3.4.2.1.3. Misinterpretations of visual data or model structure  
+3.4.2.1.4. Overgeneralizations or reversed logic (e.g., in dropdowns or inline choices)
+3.4.2.2. All distractors must be derivable from the stimulus context, including visuals or models.
+3.4.2.2.1. Avoid introducing distractors that require outside knowledge or that stray from the presented phenomenon.
+3.4.2.3. Distractors should be instructional: they must highlight common conceptual errors and offer insight into student thinking. Each should serve a diagnostic function.
+3.4.2.4. In TE formats:
+3.4.2.4.1. **Drag-and-drop/classification**: Distractors may group superficially similar but incorrect ideas, mislabel components, or reverse causal relationships.
+3.4.2.4.2. **Dropdown/inline choice**: Distractors should reflect definitional misunderstandings or logic errors. Avoid grammatical cues that signal correctness.
+3.4.2.4.3. **Hot-spot (click-to-identify)**: Distractors may include plausible but incorrect regions based on visual similarity, spatial proximity, or common misidentification. Avoid clustering hotspots too closely or making distractor regions ambiguous in size or boundary.
+3.4.2.5. Avoid visually misleading distractors — such as overlapping hotspots or misleading drag targets — and ensure visuals cannot be bypassed by using only text-based reasoning.
+3.5. Interactive Design Criteria
+3.5.1. Alignment with Scientific Thinking
+3.5.1.1. Interactive formats must be instructionally necessary — not used for novelty or aesthetics alone.
+3.5.1.2. Each interactive element must align with the cognitive demand of the item and support authentic scientific reasoning.
+3.5.1.3. Examples of appropriate cognitive demands include:
+3.5.1.3.1. Applying a model by placing or selecting components
+3.5.1.3.2. Classifying evidence or outcomes into correct categories
+3.5.1.3.3. Constructing visualizations that reflect conceptual understanding (e.g., graphing data)
+3.5.2. Clarity and Accessibility
+3.5.2.1. Use clear, grade-appropriate language in the instructions and interactive labels.
+3.5.2.2. Interactive features must be intuitive and explicitly explained within the item.
+3.5.2.3. Avoid cognitive overload caused by ambiguous controls, excessive steps, or interface distractions.
+3.5.3. Response Expectations
+3.5.3.1. Define what constitutes a complete and correct response.
+3.5.3.2. Avoid open-ended interactions without a defined response model or verifiable key.
+3.5.3.3. For model construction or graphing items, describe the expected output clearly (e.g., key components of the graph or model).
+3.5.4. Visual-Interaction Coherence
+3.5.4.1. Interactive responses must be grounded in the visuals, models, or stimulus presented.
+3.5.4.2. Ensure students must engage with these visuals to complete the interaction successfully.
+3.5.4.3. Avoid interactions that can be completed using only surface-level logic or textual clues.
+3.6. Embedded Model Exemplar Use
+3.6.1. Refer to the # MODEL EXEMPLARS # section for:
+3.6.1.1. Examples of each interactive item type (drag-and-drop, hot spot, dropdown, graphing, model construction).
+3.6.1.2. Aligned stimulus framing and question stem phrasing by format.
+3.6.1.3. Correct use of the [Visual Description:] tag and placement.
+3.6.1.4. Clear SEP, CCC, and DOK justifications aligned with interactive tasks.
+3.6.1.5. High-quality distractors that reflect common misconceptions.
+3.6.1.6. Models of purposeful and rigorous technology use in item construction.
+3.7. Answer Formatting Reminder (for TE items)
+3.7.1. Follow structure from Section 7: # ANSWER FORMAT REQUIREMENTS #
+3.7.1.1. Clearly indicate the correct response, formatted appropriately for the TE type:
+3.7.1.1.1. Drag-and-drop or classification: Describe placement logic (e.g., “Label A → Box 1; Label B → Box 3”).
+3.7.1.1.2. Hot spot: Identify the target area (e.g., “Click area: upper left quadrant of cell membrane”).
+3.7.1.1.3. Inline choice/dropdown: Specify correct choices (e.g., “Dropdown 1: B; Dropdown 2: D”).
+3.7.1.1.4. Graphing/model construction: Provide a model student response (e.g., “Line starts at 0, rises steadily through point (5, 8)…”).
+3.7.1.2. Then include:
+3.7.1.2.1. Rationale for correct choice(s): Describe why each correct interaction reflects the concept or reasoning targeted.
+3.7.1.2.2. Rationale for incorrect choice(s): Describe how each reflects a misunderstanding, flawed logic, or distractor strategy.
+3.7.2. Maintain consistent formatting and tone across all rationales. Use clear, instructional language.
+
+4. Cluster
+4.1. Structural Requirements
+4.1.1. Total Items: Each cluster must contain 8 items.
+4.1.1.1. For each cluster, generate exactly 8 fully formatted items (Item 1 through Item 8), each following the cluster formatting and dimension requirements.
+4.1.1.2. Do not output less than or more than 8 items per cluster. If any are missing, the output is considered incomplete.
+4.1.2. Item Types Required:
+4.1.2.1. At least:
+4.1.2.1.1. Two Multiple Choice (MC)
+4.1.2.1.2. Two Multiple Select (MS)
+4.1.2.1.3. Two Technology Enhanced (TE)
+4.1.2.1.4. Two additional items (any mix of MC, MS, or TE)
+4.1.2.2. CR items are strictly prohibited in clusters. Any output including CR items is invalid and must be regenerated.
+4.1.3. Cluster Design
+4.1.3.1. Anchoring Phenomenon Requirement:
+4.1.3.1.1. Begin each cluster with a clearly stated anchoring phenomenon.
+4.1.3.1.2. The phenomenon must:
+4.1.3.1.2.1. Be real-world, observable, or puzzling to students
+4.1.3.1.2.2. Be developmentally appropriate for the grade level
+4.1.3.1.2.3. Serve as the conceptual anchor for all 8 items in the cluster
+4.1.3.1.3. The phenomenon should generate a need for scientific modeling, data interpretation, or evidence-based reasoning across multiple dimensions.
+4.1.3.2. Cohesive Conceptual Design:
+4.1.3.2.1. The cluster must reflect a meaningful instructional context, not isolated fact-checking.
+4.1.3.2.2. Each item must build toward a big idea that deepens the student’s understanding of the phenomenon.
+4.1.3.2.3. Items should flow logically, progressively increasing in cognitive demand when possible.
+4.1.4. Visuals
+4.1.4.1. Refer to the relevant Visual Design Requirements for each item type:
+4.1.4.1.1. MC items: see Section 1.1.3.1.
+4.1.4.1.2. MS items: see Sections 2.1.3.1. and 2.1.3.2.
+4.1.4.1.3. TE items: see Sections 3.1.4.1. and 3.1.4.2.
+4.1.4.2. Visuals must support conceptual reasoning and not simply illustrate background information.
+4.1.4.3. Each visual must be described using a [Visual Description:] tag, placed after the stimulus and before the question stem.
+4.1.5. Question Stem Design
+4.1.5.1. Apply the following guidance for stem formatting and phrasing by item type:
+4.1.5.1.1. MC items: see Section 1.1.4.1.
+4.1.5.1.2. MS items: see Section 2.1.4 and all subsections (2.1.4.1. Through 2.1.4.2.2.).
+4.1.5.1.3. TE items: see Section 3.1.5 and all subsections (3.1.5.1 through 3.1.5.2.4.3.).
+4.2. Cognitive and Instructional Alignment
+4.2.1. DOK Levels:
+4.2.1.1. Items may range from DOK Level 1 to 4, depending on item type and complexity.
+4.2.1.1.1. DOK 1: Identifying, recognizing features, recalling observations
+4.2.1.1.2. DOK 2: Classifying data, interpreting models, selecting evidence
+4.2.1.1.3. DOK 3: Constructing explanations, evaluating claims, synthesizing patterns
+4.2.1.1.4. DOK 4: Applying data to new contexts, constructing graphs, reasoning across data sources
+4.2.1.2. Note: A complete cluster must include a mix of DOK Levels 1–3, with optional inclusion of DOK 4 if appropriate for TE items.
+4.2.2. Dimension Coverage:
+4.2.2.1. Each item must address the DCI and at least one of SEP or CCC. Collectively, all 8 items must:
+4.2.2.1.1. Cover the DCI associated with the selected standard
+4.2.2.1.2. Every item in the cluster must include SEP3: Planning and Carrying Out Investigations. This SEP is the central practice anchoring all items in the cluster.
+4.2.2.1.3. Include at least five distinct CCCs (CCC1 to CCC7); CCCs may not repeat within the cluster
+4.2.3. Transfer Emphasis:
+4.2.3.1. Tasks must reflect transfer-level reasoning. Avoid items that simply ask for observations or definitions.
+4.3. Justification and Metadata Formatting
+4.3.1. Use the following format exactly:
+4.3.1.1. Item X: [Cluster {item_type}{te_type}]: [Standard Code]
+4.3.1.2. DCI: [DCI Code and Description]
+4.3.1.3. SEP: [SEP Code and Short Name]
+4.3.1.3.1. Justification: [Why this SEP reflects student thinking]
+4.3.1.4. CCC: [CCC Code and Short Name]
+4.3.1.4.1. Justification: [How this CCC shapes reasoning]
+4.3.1.5. DOK Level: [2-4]
+4.3.1.5.1. Justification: [Why this DOK level fits the item’s cognitive demand]
+4.3.2. Visual and Interpretation Notes:
+4.3.2.1. Include [Visual Description:] between the stimulus and question stem if a visual is used.
+4.3.2.2. If using a model or diagram, prompt students to interpret, apply, or evaluate it based on the task.
+4.3.2.3. Repeat this full metadata format for each item.
+4.4. Item Interdependence and Conceptual Progression Criteria
+4.4.1. Items in a cluster may be loosely sequenced, building conceptual understanding through:
+4.4.1.1. Evidence accumulation
+4.4.1.2. Multiple perspectives on a model
+4.4.1.3. Shifts between data interpretation and explanatory reasoning
+4.4.2. Do not make later items depend on the student answering earlier ones correctly.
+4.4.3. Use the phenomenon consistently, but approach it from different CCC angles. SEP3 must be present in all items.
+4.5. Embedded Model Exemplar Use
+4.5.1. Refer to the # MODEL EXEMPLARS # section for:
+4.5.1.1. Examples of stimulus and question stem phrasing
+4.5.1.2. Multi-item flow across cluster tasks
+4.5.1.3. Appropriate visual description formatting
+4.5.1.4. Strong SEP/CCC/DOK justification language
+4.5.1.5. Rigor-appropriate distractor rationales
+4.5.1.6. Guidance for using SEP3: Planning and Carrying Out Investigations across all cluster items
+4.6. Answer Formatting Reminder (for Cluster items)
+4.6.1. Follow structure from Section 7: # ANSWER FORMAT REQUIREMENTS #
+4.6.1.1. Begin with: Answer: [correct letter]
+4.6.1.2. Then include:
+4.6.1.2.1. Rationale for correct choice(s):
+4.6.1.2.2. Rationale for incorrect choice(s):
+4.6.1.3. Provide a rationale for every option. Describe how each correct and incorrect choice supports or misrepresents scientific reasoning, and maintain consistency across all items
+
+5. Evidence-Based Selected Response (EBSR)
+5.1. Structural Requirements
+5.1.1. Item Components. EBSR items consist of two Parts (A and B), with two items each:
+5.1.1.1. Part A:
+5.1.1.1.1. A1: Claim (MC)
+5.1.1.1.1.1. Students select one correct scientific claim based on the Part A stimulus.
+5.1.1.1.1.2. Typically DOK 2.
+5.1.1.1.2. A2: Evidence (MS)
+5.1.1.1.2.1. Students select all correct supporting evidence statements based on the same Part A stimulus.
+5.1.1.1.2.2. Evidence options must be rooted in qualitative or quantitative data.
+5.1.1.1.2.3. Typically DOK 2.
+5.1.1.2. Part B:
+5.1.1.2.1. B1: Reasoning (MC or MS)
+5.1.1.2.1.1. Students select reasoning that connects the claim and evidence from Part A, based on a related but distinct second stimulus.
+5.1.1.2.1.2. Must target DOK 3: Reasoning across representations, explaining relationships, or applying a conceptual lens.
+5.1.1.2.2. B2: Extended Reasoning (MC or MS)
+5.1.1.2.2.1. Students extend reasoning to a new condition, constraint, or variable using the Part B stimulus.
+5.1.1.2.2.2. Must target DOK 4: Strategic thinking, multi-step reasoning, or evaluating claims with unfamiliar variables.
+5.1.2. Stimulus Design:
+5.1.2.1. Use two related but distinct stimuli:
+5.1.2.3. Do NOT copy, reuse, or closely paraphrase the model exemplars. Use new, creative, and grade-appropriate real-world phenomena for every item. Each stimulus must be unique, original, and relevant to the standard and DCI.
+5.1.2.1.1. Part A stimulus introduces a phenomenon and provides data to support the claim and evidence tasks.
+5.1.2.1.2. Part B stimulus continues or elaborates on the same phenomenon, offering a progression of ideas, a new constraint, or added complexity for deeper reasoning.
+5.1.3. Visual:
+5.1.3.1. If using visuals (e.g., data tables, models, or graphs), include a [Visual Description:] tag after the stimulus and before the question stem.
+5.1.3.2. Visuals must provide qualitative or quantitative data that support evidence selection or reasoning tasks.
+5.1.4. Question Stem Design:
+5.1.4.1. Use MC Stem Design 1.1.4.1.
+5.1.4.2. Use MS Stem Design 2.1.4.1. and 2.1.4.2.
+5.2. Cognitive and Instructional Alignment
+5.2.1. DOK Levels
+5.2.1.1 Part A
+5.2.1.1.1. A1 – Claim (MC)
+5.2.1.1.1.1. Targets DOK 2
+5.2.1.1.1.2. Requires identifying a valid scientific claim based on data or context
+5.2.1.1.2. A2 – Evidence (MS)
+5.2.1.1.2.1. Targets DOK 2
+5.2.1.1.2.2. Requires selecting multiple scientifically valide evidence statements grounded in qualitative or quantitative data
+5.2.1.2. Part B
+5.2.1.2.1. B1 – Reasoning (MC or MS)
+5.2.1.2.1.1. Must target DOK 3
+5.2.1.2.1.2. Requires connecting the selected claim and evidence from Part A to a new but related stimulus.
+5.2.1.2.1.3. Student thinking should include:
+5.2.1.2.1.3.1. Reasoning across representations
+5.2.1.2.1.3.2. Explaining relationships
+5.2.1.2.1.3.3. Applying conceptual frameworks
+5.2.1.2.2. B2 – Extended Reasoning (MC or MS)
+5.2.1.2.2.1. Must target DOK 4
+5.2.1.2.2.2. Requires reasoning about an unfamiliar condition, constraint, or variable presented in the Part B stimulus.
+5.2.1.2.2.3. Student thinking should reflect:
+5.2.1.2.2.3.1. Strategic synthesis of ideas
+5.2.1.2.2.3.2. Multi-step problem solving
+5.2.1.2.2.3.3. Evaluating claims under new variables or constraints
+5.2.2. Alignment Dimensions
+5.2.2.1. All parts of the EBSR item must demonstrate strong three-dimensional alignment:
+5.2.2.1.1. Must align to a single full NGSS Standard (include full code).
+5.2.2.1.2. Must address the corresponding Disciplinary Core Idea (DCI).
+5.2.2.1.3. Must include either a relevant Science and Engineering Practice (SEP) or Crosscutting Concept (CCC)—ideally both across the complete EBSR set.
+5.2.2.2. Note: Alignment should build progressively across parts—Part A focuses on core understanding and evidence evaluation, while Part B increases conceptual and reasoning complexity.
+5.2.3. Transfer Focus
+5.2.3.1. EBSR items are designed to measure how students apply and extend their understanding across multiple representations, not just recall discrete facts.
+5.2.3.2. Part A must evaluate interpretation of data within familiar contexts; Part B must challenge students to transfer and adapt their reasoning to new constraints or unfamiliar conditions.
+5.2.3.3. Avoid wording that cues correct answers; task structure should require reasoning, evaluation, or synthesis to succeed.
+5.3. Justification and Metadata Formatting
+5.3.1. Use the following format exactly:
+5.3.1.1. Item X: EBSR – [Part A1, A2, B1, or B2]: [Standard Code]
+5.3.1.2. DCI: [DCI Code and Description]
+5.3.1.3. SEP: [SEP Code and Short Name]
+5.3.1.3.1. Justification: [Why this SEP reflects the required student thinking]
+5.3.1.4. CCC: [CCC Code and Short Name]
+5.3.1.4.1. Justification: [How this CCC shapes reasoning or frames the concept]
+5.3.1.5. DOK Level: [2–4]
+5.3.1.5.1. Justification: [Explain why this DOK level is appropriate for the thinking required]
+5.3.2. Visual and Interpretation Notes:
+5.3.2.1. Include [Visual Description:] between the stimulus and question stem if a visual is used.
+5.3.2.2. Visuals must support reasoning tasks with qualitative or quantitative data.
+5.3.2.3. If using a model or diagram, prompt students to interpret, apply, or evaluate it based on the task.
+5.3.3. Repetition Reminder for Multi-Part Structure
+5.3.3.1. Repeat this full metadata format for each item in the EBSR set.
+5.3.3.2. Do not apply metadata globally across items unless explicitly instructed.
+5.4. Stimulus and Item Design Guidance
+5.4.1. Stimulus Selection and Structure
+5.4.1.1. Use Two Distinct but Related Stimuli
+5.4.1.1.1. Part A Stimulus
+5.4.1.1.1.1. Introduces a phenomenon with enough qualitative or quantitative data for students to answer both the Claim and Evidence items (A1 and A2).
+5.4.1.1.2. Part B Stimulus
+5.4.1.1.2.1. Expands on or complicates the Part A scenario (e.g., by introducing a new condition, constraint, or progression) to deepen reasoning for B1 and B2.
+5.4.1.2. Visuals (When Applicable)
+5.4.1.2.1. Visuals should support student reasoning (e.g., models, diagrams, graphs, or data tables).
+5.4.1.2.2. Include a [Visual Description:] tag immediately after the stimulus and before the question stem.
+5.4.1.2.3. Visuals must include interpretable data (qualitative or quantitative) to support evidence selection or reasoning tasks.
+5.4.1.3. Use of Phenomenon
+5.4.1.3.1. The same real-world or observable phenomenon must unify both stimuli.
+5.4.1.3.2. Part B should build logically on Part A while increasing the reasoning complexity.
+5.4.2. Question Stem Design
+5.4.2.1. Write stems that match the intended SEP and DOK level.
+5.4.2.2. Use precise, directive phrasing such as:
+5.4.1.1.2.1. “Select the claim that best explains the phenomenon.”
+5.4.1.1.2.2. “Which of the following evidence statements support the claim?”
+5.4.1.1.2.3. “Select the reasoning that best connects the claim and evidence.”
+5.4.1.1.2.4. “Which statement shows extended reasoning using the new information in the model?”
+5.4.2.3. Do not cue correct responses through wording, length, or structure.
+5.4.2.4. Each stem must clearly define the task required for that specific item (A1, A2, B1, B2).
+5.4.3. Distractor Design Guidelines (When Applicable)  
+5.4.3.1. For MC sub-items, follow the distractor design principles outlined in Section 1.4.  
+5.5. Embedded Model Exemplar Use
+5.5.1. Refer to the # MODEL EXEMPLARS # section for:
+5.5.1.1. Examples of well-phrased EBSR stems for Parts A and B
+5.5.1.2. Examples of rigorous visual description formatting
+5.5.1.3. High-quality SEP/CCC/DOK justification language
+5.6. Answer Formatting Reminder (for EBSR items)
+5.6.1. Follow structure from Section 7: # ANSWER FORMAT REQUIREMENTS #
+5.6.1.1. Begin with: Answer: [correct letter(s)]
+5.6.1.2. Then include:
+5.6.1.2.1. Rationale for correct choice(s):
+5.6.1.2.2. Rationale for incorrect choice(s):
+5.6.1.3. Provide a rationale for every option in each item (A1, A2, B1, B2)
+
+6. Constructed Response (CR)
+6.1. Structural Requirements
+6.1.1. Item Type
+6.1.1.1. All CR items must follow a Claim-Evidence-Reasoning (CER) structure. Responses must be phenomenon-driven when appropriate and prompt students to:
+6.1.1.1.1. Make a claim that directly answers the prompt.
+6.1.1.1.2. Provide evidence drawn from data, stimulus, or scientific understanding.
+6.1.1.1.3. Offer reasoning that connects the evidence to the claim using appropriate science concepts.
+6.1.1.2. Standards Selection Criteria
+6.1.1.2.1. Select a submitted standard that calls for explanation, argumentation, synthesis, or modeling (e.g., “Construct an explanation…” or “Develop a model…”).
+6.1.1.2.2. Do not select standards requiring only recall, identification, or simple descriptions.
+6.1.1.2.3. If no suitable standard is available, write: “No suitable standard was submitted for a Constructed Response item.”
+6.1.2. Item Prompt
+6.1.2.1. Phenomenon Requirements
+6.1.2.2.1. The CR item must be grounded in a real-world, observable, or puzzling phenomenon.
+6.1.2.3. Item Prompt
+6.1.2.3.1. Write a clear, concise, and focused prompt that explicitly calls for a CER-based response.
+6.1.2.3.2. Example prompt language:
+6.1.2.3.2.1. "Based on the data provided, make a claim about how [phenomenon]. Support your claim with evidence from the data and explain your reasoning using science ideas."
+6.1.2.3.3. Avoid checklist-style CRs that prompt students to list ideas without connecting them in a coherent explanation.
+6.1.3. Visuals:
+6.1.3.1. If the prompt includes a model, diagram, graph, or data table, include a [Visual Description:] tag immediately after the stimulus and before the prompt.
+6.1.3.2. Visuals must serve a reasoning function — prompting interpretation, application, or evaluation.
+6.1.3.3. Avoid decorative or extraneous visuals that do not directly support the scientific task.
+6.1.4. Prompt Design:
+6.1.4.1. The prompt must elicit multi-part reasoning, evidence-based explanation, or model-based tasks, not a single fact-based or recall-driven answer.
+6.1.4.2. Prompts should focus on knowledge transfer—requiring students to apply concepts to new situations—rather than recall definitions or isolated facts.
+6.1.4.3. Prompts must be open-ended, yet specific enough to guide students toward engaging in scientific practices aligned with the performance expectations.
+6.1.4.4. Prompts must explicitly state all required response components (e.g., claim, evidence, reasoning, diagrams) to support clarity in student expectations and rubric alignment.
+6.1.4.5. Prompts must be developmentally appropriate, both in structure and conceptual demand, for the intended grade level.
+6.1.4.6. The writing level of the prompt must be accessible to students in the target grade band.
+6.1.4.6.1. Avoid excessive jargon, nested clauses, or multi-step commands within a single sentence that could obscure comprehension.
+6.1.5. Rubric Design for Evaluation:
+6.1.5.1. Use the following 5-tier rubric with the heading labeled Tier instead of Score:
+
+# Rubric for Scoring Constructed Response (Tier-based)
+Rubric:
+- Tier: Exceeding (4)
+  Description: >
+    Response demonstrates a comprehensive understanding of the scientific concept.
+    It includes a clear, accurate explanation with appropriate scientific vocabulary,
+    relevant evidence, and strong reasoning that connects ideas.
+    May include a labeled diagram or example that enhances the explanation.
+
+- Tier: Meets (3)
+  Description: >
+    Response demonstrates a solid understanding of the concept.
+    Explanation is mostly accurate with appropriate vocabulary and some supporting evidence or reasoning.
+    Minor gaps or errors do not significantly detract from understanding.
+
+- Tier: Developing (2)
+  Description: >
+    Response shows partial understanding.
+    Explanation may include some correct ideas but is vague, contains scientific inaccuracies,
+    or lacks sufficient evidence or reasoning.
+
+- Tier: Emerging (1)
+  Description: >
+    Response shows minimal or flawed understanding.
+    Explanation is mostly incorrect, lacks coherence,
+    or includes misconceptions with little to no evidence.
+
+- Tier: No Response (0)
+  Description: >
+    No response provided or response is unrelated to the prompt.
+
+6.2. Cognitive and Instructional Alignment
+6.2.1. DOK Levels:
+6.2.1.1. Assign a DOK level between 2 and 4, based on the task’s complexity of the cognitive processes required.
+6.2.1.1.1. DOK 2 (Skill/Concept)
+6.2.1.1.1.1. Involves the use of reasoning, organizing data, or applying concepts in a familiar context.
+6.2.1.1.1.2. Acceptable only if the response includes structured reasoning or explanation across multiple dimensions (DCI, SEP, CCC).
+6.2.1.1.1.3. Not sufficient for single-part descriptive responses.
+6.2.1.1.2. DOK 3 (Strategic Reasoning)
+6.2.1.1.2.1. Requires justification of claims using evidence and/or scientific principles.
+6.2.1.1.2.2. Demands multiple reasoning steps, comparative analysis, or evaluation of data, models, or hypotheses.
+6.2.1.1.2.3. Suitable for most CR items assessing synthesis, explanation, or cause-effect reasoning.
+6.2.1.1.3. DOK 4 (Extended Reasoning)
+6.2.1.1.3.1. Involves extended thinking over time, transfer of knowledge across contexts, or designing solutions to unfamiliar problems.
+6.2.1.1.3.2. Requires students to apply scientific ideas to novel phenomena, construct complex models, or engage in critique and revision of scientific arguments.
+6.2.1.1.3.3. Appropriate for high-complexity CRs that include self-directed justification or extrapolation.
+6.2.1.2. Consider the number of components, reasoning chains, and application steps required in a complete response.
+6.2.2. Instructional and Dimensional Alignment
+6.2.2.1. CR items must integrate all three NGSS dimensions.
+6.2.2.2. CRs must reflect instructionally relevant performance expectations. They should align with classroom science tasks, not just assessment conventions.
+6.2.2.3. Science and Engineering Practices (SEP)
+6.2.2.3.1. CR tasks must elicit a targeted SEP that aligns with the task (e.g., Constructing Explanations, Developing and Using Models, Engaging in Argument from Evidence).
+6.2.2.3.2. The expected student response must demonstrate reasoning, explanation, or modeling aligned to the SEP, not just a content-based restatement.
+6.2.2.4. Disciplinary Core Ideas (DCI)
+6.2.2.4.1. The CR task must engage with a central science concept from the chosen standard.
+6.2.2.4.2. Avoid isolated facts—DCI evidence must require conceptual understanding to apply or explain.
+6.2.2.5. Crosscutting Concepts (CCC)
+6.2.2.5.1. A relevant CCC should frame how the student interprets, explains, or applies their reasoning (e.g., Cause and Effect, Systems and System Models, or Structure and Function).
+6.2.2.5.2. The CCC should not be tacked on—it must shape the student’s reasoning or explanation.
+6.2.2.6. Integrated Reasoning
+6.2.2.6.1. The CR response should demonstrate coordination between SEP, DCI, and CCC.
+6.2.2.6.2. Avoid tasks where one dimension is overemphasized at the expense of others.
+6.2.3. Transfer Emphasis
+6.2.3.1. Constructed Response tasks must assess students’ ability to transfer and apply understanding to novel or extended scenarios.
+6.2.3.2. Prompts should not simply elicit restatement of definitions or direct recall of content.
+6.2.3.3. Tasks must require the integration of core ideas with reasoning or explanation in unfamiliar contexts, using evidence, models, or principles.
+6.2.3.4. Favor prompts that ask students to evaluate claims, construct explanations, or apply patterns to new conditions or phenomena.
+
+6.3. Justification and Metadata Formatting
+6.3.1. Use the following format exactly:
+6.3.1.1. Item X: [Cluster and Subtype]: [Standard Code]
+6.3.1.2. DCI: [DCI Code and Description]
+6.3.1.3. SEP: [SEP Code and Short Name]
+6.3.1.3.1. Justification: [Why this SEP reflects student thinking]
+6.3.1.4. CCC: [CCC Code and Short Name]
+6.3.1.4.1. Justification: [How this CCC shapes reasoning]
+6.3.1.5. DOK Level: [2-4]
+6.3.1.5.1. Justification: [Why this DOK level fits the item’s cognitive demand]
+6.4. Embedded Model Exemplar Use
+6.4.1. Refer to the # MODEL EXEMPLARS # section for:
+6.4.1.1. Examples of phenomena
+6.4.1.2. Examples of student-facing prompt
+6.4.1.3. Appropriate visual description formatting
+6.4.1.4. Strong SEP/CCC/DOK justification language
+6.4.1.5. Rubric tier descriptions
+6.4.1.6. Sample student response
+6.5. Answer Formatting Reminder (for CR items)
+6.5.1. Provide a model student response that:
+6.5.1.1. Fully meets the selected standard.
+6.5.1.2. Accurately addresses every component of the prompt.
+6.5.1.3. Demonstrates strong scientific reasoning and use of academic vocabulary.
+6.5.1.4. Is organized, coherent, and complete.
+
+# VALIDATION CHECKLIST #
+1. Solvable: Is the item fully solvable using only the information and skills provided in the stimulus and standard?
+2. Grade-appropriate: Is the vocabulary, context, and required reasoning suitable for the specified grade level?
+3. Strong alignment to the standard: Is the item explicitly designed to target and fulfill the performance expectation(s) from the assigned standard?
+4. Three-Dimensional Alignment:
+4.1. Does the item require the student to engage authentically and explicitly with the identified DCI, SEP, and CCC?
+4.2. Are connections to the SEP and CCC meaningful (not superficial or merely “labeled”)?
+4.3. Only assign a CCC or SEP if the specific scientific thinking or practice it represents is integral to the task. The CCC, especially, should shape the reasoning required, rather than merely appear as a label.
+5. Phenomenon-based: Is the context, scenario, or stimulus grounded in valid, real-world science?
+5.1. Even for standalone or decontextualized items, does the stimulus feature a real-world context or observable event that provides purpose for the question (making the phenomenon at least implicit)?
+6. Visual description: If a visual is present, is it clearly and fully described with sufficient detail for accessibility and understanding?
+7. DOK Justification: Does the item include a clear, concise justification for its Depth of Knowledge (DOK) level, referencing the cognitive demand or nature of reasoning required?
+8. Content Targets: Does the item use and address content from the following?
+8.1. Standards: {standards}
+8.2. What students will do (Will-Do): {will_do}
+
+# # MODEL EXEMPLARS #
+# {model_exemplars}

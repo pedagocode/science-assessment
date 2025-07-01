@@ -6,7 +6,8 @@ from typing import Optional
 
 import streamlit as st
 from dotenv import load_dotenv
-import anthropic
+
+import openai
 
 # Setup logging
 logging.basicConfig(level=logging.INFO)
@@ -30,28 +31,27 @@ except ImportError:
 
 # Load environment variables
 load_dotenv()
-api_key = os.getenv("ANTHROPIC_API_KEY")
+# Add your OpenAI API key to .env as OPENAI_API_KEY=sk-...
+openai_api_key = os.getenv("OPENAI_API_KEY")
+openai.api_key = openai_api_key
 
 def clean_extracted_text(text: str) -> str:
     """Clean and format extracted PDF text."""
     if not text:
         return ""
     text = text.replace('\n\n', '\n')
-    text = text.strip()
-    return text
+    return text.strip()
 
 def extract_pdf_content(pdf_path: str) -> Optional[str]:
     """Extract and process text content from a PDF file."""
     if not PDF_READER_CLASS:
         st.error("PDF processing is not available")
         return None
-
     logger.info(f"Starting PDF extraction from: {pdf_path}")
     try:
         if not os.path.exists(pdf_path):
             logger.error(f"PDF file not found: {pdf_path}")
             return None
-
         with open(pdf_path, 'rb') as file:
             reader = PDF_READER_CLASS(file)
             text = []
@@ -64,282 +64,238 @@ def extract_pdf_content(pdf_path: str) -> Optional[str]:
         logger.error(f"Error in PDF extraction: {str(e)}")
         return None
 
-def get_reference_file(grade: str) -> Optional[str]:
-    """
-    Map grade levels to their reference PDF filenames.
-    These files live in reference_materials/ and have the exact titles:
-      (TCAP) science assessments Grade 6 - Google Docs.pdf
-      (TCAP) science assessments Grade 7 - Google Docs.pdf
-      (TCAP) science assessments Grade 8 - Google Docs.pdf
-    """
-    grade_mapping = {
-        "Grade 6": "(TCAP) science assessments Grade 6 - Google Docs.pdf",
-        "Grade 7": "(TCAP) science assessments Grade 7 - Google Docs.pdf",
-        "Grade 8": "(TCAP) science assessments Grade 8 - Google Docs.pdf",
-        # other grades map to None
-        "Kindergarten": None,
-        "Grade 1": None,
-        "Grade 2": None,
-        "Grade 3": None,
-        "Grade 4": None,
-        "Grade 5": None,
-        "Biology": None,
-        "Chemistry": None,
-        "Physics": None,
-    }
-    return grade_mapping.get(grade)
-
-def format_response(text: str) -> str:
-    """Format the response with custom styling."""
-    questions = text.split('Question')[1:]
-    formatted_questions = []
-    for q in questions:
-        formatted_q = f'''
-        <div style="
-            background-color: #f8f9fa;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 5px;
-            border-left: 4px solid #1f77b4;
-        ">
-            Question{q.replace(chr(10), '<br>')}
-        </div>
-        '''
-        formatted_questions.append(formatted_q)
-    return "".join(formatted_questions)
+def load_references(grade: str) -> tuple[str, str, str]:
+    """Load main, 3D NGSS, and DOK Levels reference texts."""
+    # Remove TCAP references; use model_exemplars.txt as the main reference
+    # try:
+    #     with open("reference_materials/model_exemplars.txt", "r", encoding="utf-8") as f:
+    #         main_text = f.read()
+    # except FileNotFoundError:
+    #     main_text = ""
+    main_text = ""
+    ngss_text = extract_pdf_content("reference_materials/3D NGSS.pdf") or ""
+    dok_text = extract_pdf_content("reference_materials/DOK Levels.pdf") or ""
+    return main_text, ngss_text, dok_text
 
 def get_response(
     grade: str,
+    unit: str,
+    item_type: str,
+    num_items: int,
     standards: str,
-    figure_out: str,
-    overview: str,
-    start: int = None,
-    end: int = None
+    will_do: str,
+    item_start: int = None,
+    item_end: int = None,
+    batch_num: int = None,
+    te_type: str = ""
 ) -> str:
-    """Generate assessment content using the AI model."""
-    client = anthropic.Anthropic(api_key=api_key)
-    
-    # Load reference material (used internally in the prompt only)
-    reference_file = get_reference_file(grade)
-    reference_text = ""
-    if reference_file:
-        pdf_path = f"reference_materials/{reference_file}"
-        reference_text = extract_pdf_content(pdf_path) or ""
-    
-    # build the slice instruction if provided
-    slice_instruction = ""
-    if start is not None and end is not None:
-        slice_instruction = f"\nImportant: Output ONLY Questions {start} through {end} in full, with their solutions. Do NOT ask to continue, do NOT summarize, do NOT output any message except the questions and solutions. Do NOT say 'continue', 'remaining', or anything similar."
-
-    user_content = f"""
-# CONTEXT #
-You are creating a set of science assessment items for {grade}.
-
-# START IMMEDIATELY WITH QUESTION {start if start else 1} #
-# Content Hierarchy (in order of priority):
-1. Standards
-2. What students will figure out
-3. Unit Overview
-
-# Preliminary Steps:
-1. Review the Standards, What students will figure out, and Unit Overview.
-2. Write a summary of how the Standards and Unit Overview determine what students will figure out.
-3. From the Standards and What students will figure out, write a list of skills needed.
-   - Show how each skill helps learners master the standard.
-
-# Question Creation Guidelines:
-- Generate exactly 53 questions:
-  - 5 Multiple Choice (MC) questions
-  - 5 Multiple Select (MS) questions
-  - 3 of each type of Technology Enhanced (TE) questions for a total of 12 questions
-  - 3 Cluster Items questions for a total of 24 questions
-  - 3 Evidence-Based Selected Response (EBSR) questions for a total of 15 questions
-  - 2 Short Constructed-Response (CR) questions
-- Ensure each question is solvable with the information provided.
-- Each question must reflect: What students will figure out, then align with the Unit Overview, and finally comply with the Standards.
-
-## Multiple Choice (MC):
-Students select one correct answer from four options.
-Provide four answer options labeled A, B, C, D.
-Each option should appear on its own line.
-Each MC item is worth one point.
-
-## Multiple Select (MS):
-Students select multiple correct answers from a list of options.
-The number of correct answers may or may not be specified.
-Provide 5 answer options labeled A, B, C, D, E.
-Each option should appear on its own line.
-MS items are worth two points, with the possibility of earning partial credit.
-
-## Technology Enhanced (TE):
-These items utilize the online testing platform's capabilities, such as drag-and-drop, graphing, hot-spot, inline-choice, or interactive simulations.  
-- Drag-and-Drop: Student drags labels onto a diagram. Include a description of the diagram for manual reproduction.  
-- Hot-Spot: Student clicks on the correct area of an image. Include a description for manual reproduction.  
-- Inline-Choice: Student picks from a drop-down menu embedded in a sentence.  
-- Graphing: Student plots points or draws a line on an on-screen grid.  
-TE items are designed to assess students' application of scientific concepts in interactive formats.
-
-## Cluster Items:
-A set of up to eight related questions based on a common stimulus or scenario.
-Clusters assess multiple dimensions of science understanding, including disciplinary core ideas, science and engineering practices, and crosscutting concepts.
-Questions in a cluster can be Multiple Choice, Multiple Select, or Graphing.
-Each question within a cluster is scored independently.
-
-## Evidence-Based Selected Response Questions
-Students answer a multiple-choice question and then select the evidence that best supports that answer.
-Generate a phenomenon with Multiple Choice Questions format.
-
-## Constructed-Response (CR) questions
-Students write a free-response answer.
-Assessed with rubrics.
-Require a clear step-by-step solution leading to a concise final answer.
-
-## Visual Descriptions (if needed)
-Place all visual descriptions in square brackets: [Visual: ...].
-Include enough detail (coordinates, measures, etc.) so the problem is solvable.
-Verify geometric or diagram-based details for mathematical consistency.
-
-# Formatting Requirements:
-1. Number each question as "Question X: <standard>, <question_type>". Example: "Question 1: 8.ESS2.1, MC"
-2. Identify which standard best aligns with the question and add it after the number (e.g., "Question 1: 8.ESS2.1, MC").
-3. Use the following codes for question types:
-   - Multiple Choice: MC
-   - Multiple Select: MS
-   - Technology Enhanced: TE - drag-and-drop, TE - hot-spot, TE - inline-choice, TE - graphing
-   - Cluster Items: Cluster
-   - Evidence-Based Selected Response: EBSR
-   - Constructed Response: CR
-4. Use the following answer format for all items:
-   Answer: [Letter(s) or numeric answer] | Model Solution:
-   • rationale  
-   • Final answer statement and grading rubric  
-5. Do not include any meta-commentary or extra text beyond the questions and their solutions.
-
-# Validation Checklist:
-1. Is the question solvable with the provided information?
-2. Does it reflect What students will figure out, then align with the Unit Overview, then the Standards?
-3. Are visual or geometric details valid and clearly labeled?
-4. Is there no missing or extraneous information?
-
-# REFERENCE FORMAT #
-The official {grade} assessment items live in these PDFs in our repo’s  
-`reference_materials/` folder. Point back to them if you need to quote exact  
-wording or structure:
-
-- reference_materials/(TCAP) science assessments Grade 6 - Google Docs.pdf  
-- reference_materials/(TCAP) science assessments Grade 7 - Google Docs.pdf  
-- reference_materials/(TCAP) science assessments Grade 8 - Google Docs.pdf  
-
-# CONTENT TO ADDRESS #
-Generate questions covering:
-***Standards: {standards}
-***What students will figure out: {figure_out}
-***Unit Overview: {overview}
-{slice_instruction}
-"""
-    response = client.messages.create(
-        model="claude-3-5-sonnet-20241022",
-        system=(
-            "You are a science assessment writer who exactly replicates official state assessment style and format. "
-            "Output ONLY the questions and their solutions. "
-            "Do NOT provide summaries, intros, or confirmation prompts."
-        ),
-        messages=[{"role": "user", "content": user_content}],
-        max_tokens=4000,
-        stream=False
+    """Generate assessment content using the OpenAI GPT-4o model with updated prompt."""
+    main_ref, ngss_ref, dok_ref = load_references(grade)
+    # Read the writing prompt template from reference_materials
+    with open("reference_materials/writing_prompt.txt", "r", encoding="utf-8") as f:
+        prompt_template = f.read()
+    # Read model exemplars from reference_materials/model_exemplars.txt if it exists
+    # model_exemplars = ""
+    # try:
+    #     with open("reference_materials/model_exemplars.txt", "r", encoding="utf-8") as f:
+    #         model_exemplars = f.read()
+    # except FileNotFoundError:
+    #     model_exemplars = ""
+    model_exemplars = ""
+    prompt = prompt_template.format(
+        grade=grade,
+        unit=unit,
+        item_type=item_type,
+        num_items=num_items,
+        standards=standards,
+        will_do=will_do,
+        main_ref=main_ref,
+        ngss_ref=ngss_ref,
+        dok_ref=dok_ref,
+        item_start=item_start if item_start is not None else "",
+        item_end=item_end if item_end is not None else "",
+        batch_num=batch_num if batch_num is not None else "",
+        model_exemplars=model_exemplars,
+        te_type=te_type
     )
-    return response.content[0].text
+    response = openai.chat.completions.create(
+        model="gpt-4-1106-preview",
+        messages=[
+            {"role": "system", "content": "You are a science assessment writer who exactly replicates official state assessment style and format. Output ONLY the questions and their solutions."},
+            {"role": "user", "content": prompt}
+        ],
+        max_tokens=4000,
+        temperature=0.7
+    )
+    return response.choices[0].message.content
+
 
 # Streamlit UI
 st.title("Science Assessment Generator")
-st.subheader("Generate structured assessment items with rationales")
-st.markdown("""
-For samples and more information on how to collect the data for this tool, 
-check out this [Help Page](https://docs.google.com/spreadsheets/d/1lXPIsCrwuEH3yAaj5xR56-FloC-pXU03L7gdh4Qe7bg/edit?usp=sharing).
-""")
-
-# Grade Level Selection
-grade = st.selectbox(
-    "Grade Level:", 
-    [f"Grade {i}" for i in range(6, 9)] + ["Biology", "Chemistry", "Physics", "Kindergarten"] + [f"Grade {i}" for i in range(1, 6)]
+st.subheader("Generate science assessment items by type and count")
+st.markdown(
+    """
+Refer to the appropriate tab in this [spreadsheet](https://docs.google.com/spreadsheets/d/1lXPIsCrwuEH3yAaj5xR56-FloC-pXU03L7gdh4Qe7bg/edit?usp=sharing) and copy into the corresponding textboxes.
+    """
 )
 
-# Two-column layout for standards and what students will figure out
-col1, col2 = st.columns(2)
+# UI Row 1: Grade, Unit, Item Type, Number of Items
+col1, col2, col3, col4 = st.columns(4)
 with col1:
-    standards = st.text_area(
-        "Standards:", 
-        help="List the relevant content standards being addressed.",
-        height=150
+    grade = st.selectbox(
+        "Grade Level:",
+        [f"Grade {i}" for i in range(6, 9)] + ["Biology", "Chemistry", "Physics"] + [f"Grade {i}" for i in range(1, 6)]
     )
 with col2:
-    figure_out = st.text_area(
-        "What Students Will Figure Out:", 
-        help="List what students will figure out during this unit.",
-        height=150
+    unit = st.selectbox(
+        "Unit:",
+        [f"Unit {i}" for i in range(1, 8)]
     )
+with col3:
+    item_type = st.selectbox(
+        "Item Type:",
+        ["Multiple Choice", "Multiple Select", "Technology Enhanced", "Cluster", "Evidence-Based", "Constructed Response"]
+    )
+with col4:
+    # Limit max to 3 for Cluster, EBSR, and CR; else 3-10
+    if item_type == "Cluster":
+        num_items = st.selectbox(
+            "Number of Clusters:",
+            list(range(1, 4))
+        )
+    elif item_type == "Evidence-Based":
+        num_items = st.selectbox(
+            "Number of EBSR Sets:",
+            list(range(1, 4))
+        )
+    elif item_type == "Constructed Response":
+        num_items = st.selectbox(
+            "Number of CR Items:",
+            list(range(1, 4))
+        )
+    else:
+        num_items = st.selectbox(
+            "Number of Items:",
+            list(range(3, 11))
+        )
 
-# Unit Overview
-unit_overview = st.text_area(
-    "Unit Overview:", 
-    help="Provide an overview of the content being covered in this unit.",
-    height=200
-)
+# UI Row 2: Standards & Figure Out
+r1c1, r1c2 = st.columns(2)
+with r1c1:
+    standards = st.text_area("Standards:", height=150)
+with r1c2:
+    will_do = st.text_area("What Students Will Do:", height=150)
 
-from docx import Document
-import io
 
-# Generate response on button click
+
 if st.button("Generate Assessment"):
-    if all([grade, standards, figure_out, unit_overview]):
-        with st.spinner("Generating assessment in batches of 10 questions..."):
-            try:
-                import re
-                full_text = ""
+    if all([grade, unit, item_type, num_items, standards, will_do]):
+        import re
+        from docx import Document
+        all_results = ""
+        doc = Document()
+        try:
+            status_placeholder = st.empty()
+            if item_type == "Cluster":
+                status_placeholder.info("Generating clusters with 2 MC, 2 MS, 2 TE, and 2 random (MC/MS/TE) items each...")
+                for cluster_num in range(1, num_items + 1):
+                    # 2 MC
+                    with st.spinner(f"Generating Cluster {cluster_num} Items 1–2 (MC)..."):
+                        batch_mc = get_response(
+                            grade, unit, "MC", 2, standards, will_do, "", item_start=1, item_end=2, batch_num=1, te_type=""
+                        )
+                        all_results += batch_mc + "\n\n"
+                        for line in batch_mc.split("\n"):
+                            doc.add_paragraph(line)
+                    # 2 MS
+                    with st.spinner(f"Generating Cluster {cluster_num} Items 3–4 (MS)..."):
+                        batch_ms = get_response(
+                            grade, unit, "MS", 2, standards, will_do, "", item_start=3, item_end=4, batch_num=2, te_type=""
+                        )
+                        all_results += batch_ms + "\n\n"
+                        for line in batch_ms.split("\n"):
+                            doc.add_paragraph(line)
+                    # 2 TE (rotate subtype for variety, e.g., Drag-and-Drop and Hot-Spot)
+                    te_types = [" - Drag-and-Drop", " - Hot-Spot"]
+                    for i, te_subtype in enumerate(te_types):
+                        with st.spinner(f"Generating Cluster {cluster_num} Item {5+i} (TE{te_subtype})..."):
+                            batch_te = get_response(
+                                grade, unit, "TE", 1, standards, will_do, "", item_start=5+i, item_end=5+i, batch_num=3+i, te_type=te_subtype
+                            )
+                            all_results += batch_te + "\n\n"
+                            for line in batch_te.split("\n"):
+                                doc.add_paragraph(line)
+                    # 2 random (MC, MS, or TE)
+                    import random
+                    random_types = ["MC", "MS", "TE"]
+                    for i in range(7, 9):
+                        rand_type = random.choice(random_types)
+                        te_type_val = ""
+                        if rand_type == "TE":
+                            te_type_val = random.choice([" - Drag-and-Drop", " - Hot-Spot", " - Inline-Choice", " - Graphing"])
+                        with st.spinner(f"Generating Cluster {cluster_num} Item {i} (Random: {rand_type}{te_type_val})..."):
+                            batch_rand = get_response(
+                                grade, unit, rand_type, 1, standards, will_do, "", item_start=i, item_end=i, batch_num=5+i, te_type=te_type_val
+                            )
+                            all_results += batch_rand + "\n\n"
+                            for line in batch_rand.split("\n"):
+                                doc.add_paragraph(line)
+                file_name = f"{grade} {unit} {item_type} Items.docx"
+            elif item_type == "Evidence-Based":
+                status_placeholder.info("Generating EBSR item sets...")
+                for ebsr_num in range(1, num_items + 1):
+                    with st.spinner(f"Generating EBSR Set {ebsr_num}..."):
+                        ebsr_result = get_response(
+                            grade, unit, item_type, 1, standards, will_do, ""
+                        )
+                        all_results += ebsr_result + "\n\n"
+                        for line in ebsr_result.split("\n"):
+                            doc.add_paragraph(line)
+                file_name = f"{grade} {unit} {item_type} Sets.docx"
+            elif item_type == "Constructed Response":
+                status_placeholder.info("Generating Constructed Response items...")
+                for cr_num in range(1, num_items + 1):
+                    with st.spinner(f"Generating CR Item {cr_num}..."):
+                        cr_result = get_response(
+                            grade, unit, item_type, 1, standards, will_do, ""
+                        )
+                        all_results += cr_result + "\n\n"
+                        for line in cr_result.split("\n"):
+                            doc.add_paragraph(line)
+                file_name = f"{grade} {unit} {item_type} Items.docx"
+            else:
+                status_placeholder.info("Generating assessment items...")
                 batch_size = 10
-                total_questions = 53
+                total = int(num_items)
                 current = 1
-                while current <= total_questions:
-                    end = min(current + batch_size - 1, total_questions)
-                    part = get_response(
-                        grade,
-                        standards,
-                        figure_out,
-                        unit_overview,
-                        start=current,
-                        end=end
+                while current <= total:
+                    end = min(current + batch_size - 1, total)
+                    batch_result = get_response(
+                        grade, unit, item_type, end - current + 1, standards, will_do, ""
                     )
-                    # Remove unwanted continuation messages
-                    part = re.sub(r"\[.*?continu(ing|e|ation).*?\]", "", part, flags=re.IGNORECASE)
-                    part = re.sub(r"\[.*?remaining.*?\]", "", part, flags=re.IGNORECASE)
-                    part = re.sub(r"\[.*?follow(ing|s).*?\]", "", part, flags=re.IGNORECASE)
-                    full_text += part.strip() + "\n\n"
-                    # Find the last question number generated
-                    matches = list(re.finditer(r"Question (\d+):", part))
+                    all_results += batch_result + "\n\n"
+                    for line in batch_result.split("\n"):
+                        doc.add_paragraph(line)
+                    matches = list(re.finditer(r"Item (\d+):", batch_result))
                     if matches:
-                        last_q = int(matches[-1].group(1))
-                        current = last_q + 1
+                        last_item = int(matches[-1].group(1))
+                        current = last_item + 1
                     else:
                         current = end + 1
-                st.success("Assessment Generated Successfully!")
-                st.markdown(format_response(full_text), unsafe_allow_html=True)
-                with st.expander("Show Raw Text"):
-                    st.text_area("Raw Assessment Text", value=full_text, height=400)
-                # build and download .docx
-                doc = Document()
-                for line in full_text.split("\n"):
-                    doc.add_paragraph(line)
-                buffer = io.BytesIO()
-                doc.save(buffer)
-                buffer.seek(0)
-                st.download_button(
-                    label="Download as Word (.docx)",
-                    data=buffer,
-                    file_name="Science_Assessment.docx",
-                    mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-                )
-            except Exception as e:
-                st.error(f"An error occurred: {e}")
-                logger.error(f"Error generating assessment: {e}")
+                file_name = f"{grade} {unit} {item_type} Item Types.docx"
+            buffer = io.BytesIO()
+            doc.save(buffer)
+            buffer.seek(0)
+            status_placeholder.success("Item generation complete!")
+            st.download_button(
+                label="Download as Word (.docx)",
+                data=buffer,
+                file_name=file_name,
+                mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+            )
+            st.markdown(all_results, unsafe_allow_html=True)
+        except Exception as e:
+            st.error(f"An error occurred: {e}")
+            logger.error(f"Error generating assessment: {e}")
     else:
-        st.warning("Please fill in all fields to generate the assessment.")
+        st.warning("Please fill in all fields.")

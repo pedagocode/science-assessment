@@ -1,0 +1,864 @@
+Use these as exemplars for structure, formatting, and rationale quality. 
+**IMPORTANT** DO NOT copy, reuse, or closely paraphrase the model exemplars. Generate a new, creative, and grade-appropriate real-world phenomena for every item. 
+Each stimulus must be unique, original, and relevant to the {standards}, appropriate DCI, and what students (will_do).
+
+---
+
+# Multiple Choice (MC)
+
+Item 1 : MC: 6.LS2.1
+DCI: LS2.A: Interdependent Relationships in Ecosystems
+SEP: SEP4: Analyzing and Interpreting Data
+Justification:** Students interpret a population bar graph to reason about the impact of an introduced species, which engages data analysis for decision-making.
+CCC: CCC4: Systems and System Models
+Justification: The item requires students to understand how a new species alters population dynamics in a pond system, demonstrating systems thinking and interdependence.
+DOK Level: 2
+Justification:** Requires students to interpret a visual representation and apply cause-and-effect reasoning to identify a potential solution, involving some decision-making based on evidence.
+
+Stimulus:
+After black carp were accidentally introduced to a local pond, scientists observed major changes in the populations of native species. The graph shows population percentages of four species before and after the introduction.
+
+Visual Description:
+Bar graph titled “Pond Species Populations Before and After Black Carp Introduction,” with species (Bluegill, Catfish, Mussel, Black Carp) on the x-axis and population percentage on the y-axis. Bars show that black carp increase sharply while the other species decline.
+
+Question:
+Which statement identifies a solution to the changing populations in the pond?
+
+A) Remove the catfish so that the black carp population will decrease.
+B) Add more mussels so that the black carp and catfish will have more food.
+C) Remove the black carp so that the catfish and mussel populations will increase.
+D) Add more bluegill so that the black carp population will not change but the pond will have more fish.
+
+Answer: C
+
+Rationale for correct choice(s):
+Removing the black carp eliminates the new competitor, which would allow native species to rebound.
+
+Rationale for incorrect choice(s):
+A: Catfish are being affected, not causing the issue.
+B: Adding more mussels doesn’t solve the competition problem.
+D: Adding bluegill doesn’t address the imbalance or reduce pressure from black carp.
+
+
+Item 2: MC: 7.ESS3.3
+DCI: ESS3.C: Human Impacts on Earth Systems
+SEP: SEP7: Engaging in Argument from Evidence
+Justification:** Students are evaluating multiple options to determine which is best supported by reasoning about sustainability, aligning with SEP7’s focus on justification through evidence.
+CCC: CCC2: Cause and Effect
+Justification:** The item asks students to reason about how specific agricultural practices influence long-term ecosystem health, a clear cause-and-effect relationship.
+DOK Level: 2
+Justification:** Requires students to apply understanding of ecological practices and evaluate multiple options to select a sustainable solution, involving reasoning beyond recall.
+
+Stimulus:
+A farmer notices that after growing crops in the same field for several years, the plants aren’t as healthy and the soil seems dry and less fertile. The farmer wants to choose a strategy that will help protect the soil and keep the ecosystem productive.
+
+Question:
+Which farming practice allows a farmer to best maintain the long-term health of the ecosystem in which the crops grow?
+
+A) Irrigating the fields with large volumes of water to clear the top layer of soil
+B) Introducing a predator species to reduce the population of herbivores
+C) Applying chemical fertilizer to the fields to increase crop productivity
+D) Rotating the fields to help prevent the depletion of minerals in the soil
+
+Answer: D
+
+Rationale for correct choice(s):
+Crop rotation helps preserve soil nutrients, reducing long-term depletion and maintaining ecosystem stability.
+
+Rationale for incorrect choice(s):
+A: Removing topsoil can lead to erosion and degrades soil health.
+B: Introducing predators affects animal populations, not soil sustainability.
+C: Chemical fertilizers may boost short-term yields but often harm long-term soil quality.
+
+
+---
+
+
+# Multiple Select (MS)
+
+
+Item 1: MS: 6.ESS2.6
+DCI: ESS2.C: The Roles of Water in Earth’s Surface Processes
+SEP: SEP4: Analyzing and Interpreting Data
+Justification: While students are not designing the investigation themselves, they are analyzing the structure and results of a planned lab. This engages SEP3 as they interpret how a modeled investigation provides insight into a broader scientific phenomenon.
+CCC: CCC2: Cause and Effect
+Justification: Students must reason about how temperature differences cause water to move, applying observed outcomes to real-world systems like ocean currents.
+DOK Level: 3
+Justification: Requires interpreting experimental observations to select multiple conclusions about real-world ocean phenomena.
+
+Stimulus:
+After learning that deep ocean currents are colder than surface currents, a student wondered if temperature affects how water moves. To test this, they conducted a lab comparing warm and cold water movement in two bottle setups.
+
+[Visual Description:]
+Diagram shows two bottle setups:
+Setup 1: Warm water over cold water (with red/blue food coloring)
+Setup 2: Cold water over warm water
+
+Table summarizes results:
+Setup 1: Warm water stays on top
+Setup 2: Cold water sinks and mixes
+
+Question:
+Which two conclusions about Earth's ocean currents can the students reach from this lab?
+
+A) Temperature difference between air and deep water moves deep ocean currents.
+B) Surface currents will be warmer than deep water currents.
+C) When surface water in the ocean cools, it sinks and creates currents.
+D) Ocean currents must flow in a downward direction.
+E) The smaller the water temperature difference, the faster the ocean currents move.
+
+Answer: B, C
+Rationale for correct choice(s):
+B: The lab shows that warm water remains above colder water, suggesting surface water in oceans is typically warmer than deeper currents.
+C: In Setup 2, the cold water sinks and mixes, modeling how cooling surface water sinks and helps drive ocean currents.
+Rationale for incorrect choice(s):
+A: Air temperature is not part of the lab setup and goes beyond what was tested.
+D: Not all ocean currents move downward—this is an overgeneralization.
+E: The lab doesn’t explore the relationship between temperature difference and current speed.
+
+
+Item 2: MS: 7.LS2.4
+DCI: LS2.C: Ecosystem Dynamics
+SEP: SEP8: Obtaining, Evaluating, and Communicating Information
+Justification: Students must evaluate multiple data sources and determine which ones would be useful to explain drought’s effects on an ecosystem.
+CCC: CCC2: Cause and Effect
+Justification: Students are selecting data types that reveal the effects of drought (a cause) on living systems. They must reason about which observations best capture those effects.
+DOK Level: 2
+Justification: Requires selecting types of data relevant to ecosystem-level impact assessment.
+
+Stimulus:
+A local forest has been experiencing drought conditions for three years. Students are working on a project to determine how the drought might be affecting the ecosystem. They are deciding what kinds of data to collect.
+
+Question:
+Which three types of data should students collect to identify how drought can affect an ecosystem?
+
+A) The barometric pressure of the atmosphere
+B) The types of animals in the area
+C) The height changes of native plants
+D) The local average wind speed
+E) The number of different organisms in the soil
+
+Answer: B, C, E
+Rationale for correct choice(s):
+B: The types of animals present reveal which species can survive drought and indicate ecosystem shifts.
+C: Height changes in plants reflect reduced water availability and stress on vegetation.
+E: The number of soil organisms reflects biodiversity and the health of below-ground ecosystems affected by drought.
+Rationale for incorrect choice(s):
+A: Barometric pressure is a short-term atmospheric measure, not directly linked to ecosystem impact.
+D: Wind speed is a weather variable and doesn’t measure ecological changes from drought.
+
+
+Item 3: MS: 6.LS2.1
+DCI: LS2.A: Interdependent Relationships in Ecosystems
+SEP: SEP7: Engaging in Argument from Evidence
+Justification: Students are asked to evaluate claims about population-level changes and select those supported by food web evidence. This reflects SEP7, as they must justify conclusions based on organismal relationships.
+CCC: CCC4: Systems and System Models
+Justification: Students must understand how a disruption to one component (grain) affects the entire ecosystem. This demonstrates CCC4 by tracing interactions and dependencies within a complex system.
+DOK Level: 3
+Justification: Requires tracing ecosystem-level impact across a food web due to a single change in food availability.
+
+Stimulus:
+After a sudden pest outbreak damaged the grain crops in a region, scientists studied the food web to predict how other populations would be affected. The food web shows feeding relationships among foxes, owls, birds, mice, rabbits, grasshoppers, carrots, grasses, and grains.
+
+[Visual Description:]
+Food web arrows show:
+Mice and grasshoppers eat grains
+Mice eaten by owls and foxes
+Grasshoppers eaten by birds
+
+Question:
+Which three statements summarize how the ecosystem would be affected by pests that attack grains?
+
+A) The population of mice would decrease.
+B) The fox population would not be affected.
+C) There would be less food for grasshoppers.
+D) The population of rabbits would increase.
+E) The bird population would decrease.
+
+Answer: A, C, E
+
+Rationale for correct choice(s):
+A: Mice depend on grains for food, so pest damage to grains would reduce their population.
+C: Grasshoppers eat grains, so grain loss would lead to less food for them.
+E: Birds rely on grasshoppers as a food source, so fewer grasshoppers would reduce bird populations.
+
+Rationale for incorrect choice(s):
+B: Foxes eat mice, so a decline in mice would likely affect them too.
+D: Rabbits eat grasses and carrots, not grains—this population wouldn't be directly affected.
+
+
+Item 4: MS: 7.LS2.5
+DCI: LS2.C: Ecosystem Dynamics
+SEP: SEP6: Constructing Explanations
+Justification: Students evaluate and select solutions based on ecological reasoning and must explain the predicted outcomes of each intervention. This aligns with SEP6, as they are connecting cause and consequence to build a coherent explanation.
+CCC: CCC2: Cause and Effect
+Justification: The task requires analyzing how human actions (like boat cleaning) directly influence biological outcomes (jellyfish spread and zooplankton levels), making CCC2 central to the reasoning process.
+DOK Level: 3
+Justification: Requires identifying two viable actions and predicting their ecological consequences.
+
+Stimulus:
+Students learned that freshwater jellyfish, an invasive species, are spreading rapidly between lakes by attaching to boats. Because jellyfish eat zooplankton, students are evaluating which strategies could help reduce the spread and protect lake ecosystems.
+
+Question:
+Which two solutions would best help stop the spread of the freshwater jellyfish and how would the solution affect zooplankton populations?
+
+[Visual Description:]
+Table shows five paired scenarios, each including a possible solution and its predicted effect on zooplankton populations.
+
+A) Solution: Require boats to be cleaned before they are used in different lakes.
+Effect on Zooplankton: Jellyfish will not spread to other lakes.
+B) Solution: Require boats to be cleaned before they are used in different lakes.
+Effect on Zooplankton: Populations will decrease because jellyfish feed on them.
+C) Solution: Require people to have a license to drive a boat in lakes.
+Effect on Zooplankton: Populations will be more stable because jellyfish do not feed on them.
+D) Solution: Require boats to be cleaned before they are used in different lakes.
+Effect on Zooplankton: Populations will increase because there will be fewer jellyfish to feed on them.
+E) Solution: Require people to have a license to drive a boat in lakes.
+Effect on Zooplankton: Populations will decrease because jellyfish feed on them.
+
+Answer: A, D
+
+Rationale for correct choice(s):
+A: Cleaning boats helps stop jellyfish from spreading, which prevents them from entering new lakes.
+D: If jellyfish are prevented from spreading, zooplankton populations can increase due to reduced predation.
+
+Rationale for incorrect choice(s):
+B: Although the solution is valid, the stated effect is incorrect—cleaning boats should help protect zooplankton.
+C: Licensing boaters does not affect jellyfish movement or feeding, so it won’t help zooplankton.
+E: Licensing also has no ecological impact on jellyfish predation or zooplankton decline.
+
+
+
+--
+
+
+# Technology Enhanced (TE)
+
+## Example 1: Drag-and-Drop – 6.PS3.1
+Item: TE: Drag-and-Drop – 6.PS3.1
+DCI: PS3.B: Conservation of Energy and Energy Transfer
+SEP: SEP4: Analyzing and Interpreting Data
+Justification: Students must analyze scenario descriptions and determine which form of energy is dominant, requiring comparison and categorization based on observed or implied behavior.
+CCC: CCC5: Energy and Matter
+Justification: students must trace how energy exists in different forms (kinetic, potential, thermal) and understand how it is transferred or stored in everyday situations. It emphasizes the flow and transformation of energy within systems.
+DOK Level: 3
+Justification: Requires strategic thinking and reasoning to determine the dominant type of energy in each case.
+
+Stimulus:
+A student observes that different objects and situations in daily life involve energy in different forms—motion, stored energy, or heat. Use the drag-and-drop tool to sort each scenario based on the main type of energy being demonstrated.
+
+Visual Description:
+A drag-and-drop interface with 3 labeled columns:
+- Column 1: Kinetic Energy
+- Column 2: Potential Energy
+- Column 3: Thermal Energy
+Draggable scenarios:
+- A stretched rubber band before being released
+- A child sliding down a playground slide
+- A pot heating on a stove burner
+- A ball resting at the top of a hill
+- A roller coaster in motion
+- A metal spoon warming in hot soup
+
+Prompt:
+Drag each scenario into the correct column to show whether it demonstrates kinetic, potential, or thermal energy.
+
+Answer:
+Kinetic:
+- A child sliding down a playground slide
+- A roller coaster in motion
+Potential:
+- A stretched rubber band before being released
+- A ball resting at the top of a hill
+Thermal:
+- A pot heating on a stove burner
+- A metal spoon warming in hot soup
+
+Rationale for correct choice(s):
+A child sliding and a roller coaster in motion both involve visible movement—this is kinetic energy.
+A stretched rubber band and a ball at a height have stored energy due to position or tension—potential energy.
+A pot on a stove and a spoon in hot soup are heated through thermal energy transfer.
+
+Rationale for incorrect choice(s):
+Misplacing scenarios like the stretched rubber band in kinetic would confuse stored energy with motion.
+Placing a spoon warming in kinetic or potential shows confusion between heat transfer and physical movement or height.
+Errors reflect misunderstanding of how energy is classified based on observable traits.
+
+
+## Example 2: Hot-Spot – 6.PS3.2
+Item: TE: Hot-Spot – 6.PS3.2
+DCI: PS3.B: Conservation of Energy and Energy Transfer
+SEP: SEP4: Analyzing and Interpreting Data
+Justification:** Students are examining a visual model (scene) to determine where conduction occurs, requiring interpretation of spatial relationships and physical contact.
+CCC: CCC2: Cause and Effect
+Justification: students must identify the causal relationship between direct contact with a heat source and the transfer of thermal energy through conduction.
+DOK Level: 2
+Justification: students must interpret a visual model, recognize patterns of heat transfer, and apply conceptual understanding of conduction to select accurate hotspots.
+
+Stimulus:
+While camping, a group of friends notice that different things around a fire feel warm in different ways. One student asks: “Where is the heat traveling through touch?” Use the image to select two places where conduction is occurring.
+
+Visual Description:
+An illustration of a campfire scene that includes:
+- Fire pit with burning logs
+- Metal pot over flames
+- Marshmallow on a metal skewer
+- A person warming hands near the fire
+- Rising heat waves drawn above fire
+
+Prompt:
+Click on two areas of the image that show where thermal energy is being transferred by conduction.
+
+Answer:
+- Metal pot touching the flames
+- Metal skewer holding the marshmallow
+
+Rationale for correct choice(s):
+The pot and skewer both involve direct metal contact with a heat source—hallmarks of conduction.
+
+Rationale for incorrect choice(s):
+Warming hands reflects radiation, not conduction.
+Rising heat waves are convection, not conduction.
+Selecting these alternatives shows misunderstanding of the required physical contact for conduction.
+
+
+## Example 3: Inline-Choice – 6.PS3.2
+Item: TE: Inline-Choice – 6.PS3.2
+DCI: PS3.B: Conservation of Energy and Energy Transfer
+SEP: SEP6: Constructing Explanations
+Justification: Students must determine which scientific mechanism explains each phenomenon and construct an accurate explanation by completing a sentence.
+CCC: CCC2: Cause and Effect
+Justification: students must identify specific mechanisms of energy transfer and link each observed effect (sand heating, feet warming) to its underlying cause.
+DOK Level: 2
+Justification: requires students to apply understanding of energy transfer types to a familiar context and select appropriate explanations based on cause-and-effect reasoning.
+
+Stimulus:
+After spending the day at the beach, a student notices the sand is hot from the sun—and that it feels even hotter when walking on it barefoot. Complete the sentence to explain how energy is transferred in each part of this situation.
+
+Prompt:
+Complete the sentence to explain how energy is transferred in each part of this situation by selecting the correct energy transfer method from the drop-down menus.
+
+Sentence:
+When the sun heats the sand on a beach, this is an example of [inline-choice: radiation/conduction/convection].
+When you walk on the hot sand and your feet get warm, that is [inline-choice: radiation/conduction/convection].
+
+Answer:
+Radiation
+Conduction
+
+Rationale for correct choice(s):
+Radiation: Solar energy transfers through space without contact.
+Conduction: Feet absorb heat by touching the sand, indicating direct thermal transfer.
+
+Rationale for incorrect choice(s):
+Convection: Requires fluid movement, not relevant to these scenarios.
+Misidentifying conduction or radiation shows confusion between contact-based and wave-based energy transfer.
+
+
+## Example 4: Graphing – 6.PS3.1
+Item: TE: Graphing – 6.PS3.1
+DCI: PS3.B: Conservation of Energy and Energy Transfer
+SEP: SEP2: Developing and Using Models
+Justification: Students build a model using a graph to represent dynamic energy exchanges (kinetic and potential) and must structure it to reflect real system behavior.
+CCC: CCC5: Energy and Matter
+Justification: students must model how energy is transferred and transformed between kinetic and potential forms and recognize that total energy is conserved throughout the system.
+DOK Level: 3
+Justification: students must develop a dynamic model, analyze changes over time, and apply conceptual understanding of energy conservation and transformation in a real-world context.
+
+Stimulus:
+A student watches a ball bounce several times after being dropped. They wonder how the ball’s energy changes each time it rises and falls.
+
+Visual Description:
+Interactive graph with:
+- X-axis labeled “Time (seconds)”
+- Y-axis labeled “Energy (Joules)”
+Two editable lines:
+- Line 1 (Kinetic Energy) – student plots this
+- Line 2 (Potential Energy) – student plots this
+Total Energy is not required to be graphed but assumed to be conserved.
+
+Prompt:
+Create a graph that models how kinetic and potential energy change over time during the bouncing motion until it comes to rest.
+
+Answer (Expected Graph Features):
+- Kinetic Energy: Peaks when the ball hits the ground; valleys when at the top.
+- Potential Energy: Peaks when ball is highest; valleys at impact.
+- Both lines show decreasing amplitude due to energy transformation into heat.
+- Total energy appears conserved with minor losses.
+
+Answer (Scoring Guide):
+A correct student-created model will include:
+- Alternating PE and KE curves with inverse relationship
+- Energy values that diminish gradually over time
+- Clear understanding of how PE converts to KE and back
+- Total energy visualized as conserved through modeling
+
+Rationale for correct choice(s):
+Accurately modeling inverse energy curves demonstrates understanding of transfer and conservation.
+Decreasing energy over time suggests correct reasoning about loss to thermal energy.
+
+Rationale for incorrect choice(s):
+Flat lines or only one energy type misrepresents transformation.
+Total energy increasing over time violates conservation laws.
+Misplaced peaks/valleys show lack of understanding of when energy is stored or moving.
+
+
+---
+
+
+# Cluster (Clustered Item Set)
+
+### Phenomenon:
+A group of middle school students partners with a local natural history museum to explore how life on Earth has changed over millions of years. The museum provides three rock samples, each from a different geologic period, containing distinct fossil types.
+
+The students wonder: Do the types and number of organisms in these fossil layers show patterns of extinction or evolution over time?
+
+**Item 1: MC: 8.LS4.1
+DCI: LS4.A: Evidence of Common Ancestry and Diversity
+SEP: SEP3: Planning and Carrying Out Investigations
+Justification: Students evaluate which scientific question can drive an effective investigation, a core step in the planning process.
+CCC: CCC1: Patterns
+Justification: The question involves observing patterns in fossil distribution over time to identify evolutionary trends.
+DOK Level: 2
+Justification: Students must identify the most valid scientific question to guide the investigation.
+
+Stimulus:
+Before beginning their investigation, the students decide they need a clear guiding question. They review what fossil types are found in each layer and think about how those fossils might reflect changes in life forms over time.
+
+Question:
+Which question would best guide the students’ fossil investigation?
+
+A) How did life begin on Earth?
+B) What caused the extinction of the dinosaurs?
+C) How did the types and number of organisms change over time in the fossil layers?
+D) Why are fossils found in only some places on Earth?
+
+Answer: C
+
+Rationale for correct choice(s):
+C: The question is specific, investigable, and clearly linked to patterns in fossil records.
+
+Rationale for incorrect choice(s):
+A: Too broad and not answerable with available fossil evidence.
+B: Focuses on a historical event not supported by the students' samples.
+D: Irrelevant to the investigation goal of tracking change over time.
+
+
+**Item 2: MS – 8.LS4.1
+DCI: LS4.A: Evidence of Common Ancestry and Diversity
+SEP: SEP3: Planning and Carrying Out Investigations
+Justification: Students assess the methodological design of an investigation, including sampling, standardization, and categorization—critical planning components.
+CCC: CCC2: Cause and Effect
+Justification: The choices influence the validity of conclusions, which require causal reasoning to link investigative design with outcome quality.
+DOK Level: 3
+Justification: Requires identifying investigation components and how they affect the strength of conclusions.
+
+Stimulus:
+To make sure their fossil data is accurate and comparable, the students review their methods. They want to decide which practices will help improve the reliability of their results.
+
+Question:
+Which actions would most likely improve the accuracy and usefulness of the students' fossil investigation results? Select all that apply.
+
+A) Collect fossil data using consistent procedures across all samples
+B) Use different identification methods for each rock layer
+C) Compare fossil records from multiple time periods
+D) Record observations using vague descriptions
+E) Use a standard system for categorizing fossil types
+
+Answer: A, C, E
+
+Rationale for correct choice(s):
+A: Using consistent procedures ensures reliable data collection.
+C: Comparing multiple time periods helps identify change over time.
+E: Categorizing fossils with a standard system supports data accuracy and repeatability.
+
+Rationale for incorrect choice(s):
+B: Different identification methods reduce comparability and introduce bias.
+D: Vague observations decrease the clarity and precision of findings.
+
+
+**Item 3: TE – Drag-and-Drop – 8.LS4.1
+DCI: LS4.A: Evidence of Common Ancestry and Diversity
+SEP: SEP3: Planning and Carrying Out Investigations
+Justification: Students model the structure of a scientific investigation, sequencing essential planning and execution steps.
+CCC: CCC4: Systems and System Models
+Justification: The investigation process is treated as a system of interconnected steps that work together to produce valid scientific conclusions.
+DOK Level: 3
+Justification: Requires constructing a system of ordered investigation steps that interact to produce reliable outcomes.
+
+Visual Description:
+Six draggable steps, four blanks labeled Investigation Step 1–4.
+
+Options:
+Choose a scientific question
+Collect rock samples from different time periods
+Identify and record types of fossils
+Analyze fossil patterns
+Compare fossil traits to modern organisms
+Write a report
+
+Prompt:
+Drag the steps into the correct sequence to show how the students can carry out a scientific investigation using fossil evidence to study how life has changed over time.
+
+Answer (Correct Order):
+Choose a scientific question
+Collect rock samples from different time periods
+Identify and record types of fossils
+Analyze fossil patterns
+
+Rationale for correct choice(s):
+These steps logically build a scientific investigation from question to analysis, forming a functional system model.
+
+Rationale for incorrect choice(s):
+Comparing to modern organisms and writing a report are post-investigation extensions, not core procedural steps.
+
+**Item 4: MC – 8.LS4.1
+DCI: LS4.A: Evidence of Common Ancestry and Diversity
+SEP: SEP4: Analyzing and Interpreting Data
+Justification: Students must analyze a fossil distribution table to make claims about evolutionary change across geological timescales.
+CCC: CCC3: Scale, Proportion, and Quantity
+Justification: Requires reasoning across millions of years to understand biological change at an appropriate temporal scale.
+DOK Level: 2
+Justification: Requires interpreting changes in fossil types over large timescales.
+
+Stimulus:
+The students found fossils in three rock layers. The table below shows which fossils were found in each layer.
+
+[Visual Description:]
+Table with three rock layers labeled A, B, and C. Layer A lists Trilobites and Brachiopods; Layer B shows Ammonites and Ferns; Layer C lists Mammals and Flowering Plants.
+
+Question:
+Which conclusion best reflects the scale of change in life over time?
+
+A) Trilobites lived alongside mammals
+B) Organisms changed gradually over long periods
+C) Ammonites are more important than mammals
+D) All organisms lived during the same era
+
+Answer: B
+
+Rationale for correct choice(s):
+B: Recognizes biological change across vast geologic time using fossil data as evidence.
+
+Rationale for incorrect choice(s):
+A: Incorrect overlap of species from different time periods.
+C: Value-based comparison, not evidence-based.
+D: Contradicts sequential fossil appearance.
+
+**Item 5: MC – 8.LS4.1
+DCI: LS4.A: Evidence of Common Ancestry and Diversity
+SEP: SEP7: Engaging in Argument from Evidence
+Justification: Students must make claims about adaptation by reasoning from observable fossil features.
+CCC: CCC6 – Structure and Function
+Justification: Fossilized body structures (teeth, legs) are used to infer their function and the organisms’ ecological roles.
+DOK Level: 2
+Justification: Students must link fossil structures to their possible functions and evolutionary implications.
+
+Stimulus:
+The students found two fossils in different rock layers. One fossil has long legs and sharp teeth; the other has hooves and flat teeth.
+
+Question:
+What does this change in structure suggest about how organisms lived in the past?
+
+A) Hoofed animals replaced meat-eaters because of changing environments
+B) All animals in older layers could fly
+C) Animals didn’t adapt; they all stayed the same
+D) Sharp teeth are found only in modern animals
+
+Answer: A
+
+Rationale for correct choice(s):
+A: Recognizes that structure relates to function and adaptation in response to environmental shifts.
+
+Rationale for incorrect choice(s):
+B: Unrelated claim about flight; not supported by the evidence.
+C: Incorrectly asserts no adaptation.
+D: Sharp teeth exist in both modern and ancient animals.
+
+**Item 6: TE – Hot Spot: 8.LS4.1
+DCI: LS4.A: Evidence of Common Ancestry and Diversity
+SEP: SEP2: Developing and Using Models
+Justification: Students use a timeline model to identify a plausible extinction event based on changes in fossil record patterns.
+CCC: CCC1: Patterns
+Justification: The sudden disappearance of fossil types signals a pattern that students must recognize and interpret.
+DOK Level: 2
+Justification: Requires students to interact with a visual model to identify meaningful changes in fossil appearance.
+
+[Visual Description:]
+Timeline diagram with different fossil types appearing/disappearing across eras. One boundary shows a sudden disappearance of 75% of species.
+
+Prompt:
+Examine the timeline. Fossils of many species disappear between certain time periods. Click on the part of the timeline where a mass extinction most likely occurred.
+
+Answer:
+The boundary where the sudden disappearance of 75% of species is shown.
+
+Rationale for correct choice(s):
+Indicates a clear pattern of loss consistent with mass extinction events.
+
+Rationale for incorrect choice(s):
+Selecting areas with minor or gradual change does not represent a major extinction.
+
+
+**Item 7: MC – 8.LS4.1
+DCI: LS4.A
+SEP: SEP8: Obtaining, Evaluating, and Communicating Information
+Justification: Students must evaluate competing scientific claims about where and how fossils form.
+CCC: CCC5: Energy and Matter
+Justification: Fossil formation involves the transformation of organic material into mineral structures, reflecting matter cycling.
+DOK Level: 2
+Justification: Requires understanding that fossil formation involves material processes related to decomposition, burial, and mineralization.
+
+Stimulus:
+The students want to know why they are only finding fossils in sedimentary rocks. They learn about the types of rocks and how fossils form.
+
+Question:
+Which statement best explains why fossils are found in sedimentary rock?
+
+A) Sedimentary rocks form where matter accumulates slowly over time
+B) Fossils form in any rock, including lava rocks
+C) Soft tissues need added energy to form fossils
+D) Fossils can form only in water
+
+Answer: A
+
+Rationale for correct choice(s):
+A: Accumulated sediment allows preservation and mineralization—key to fossil formation.
+
+Rationale for incorrect choice(s):
+B: Fossils rarely form in igneous/metamorphic rock due to extreme heat/pressure.
+C: Energy input is not required for fossilization.
+D: Fossils can form in sediment, not only underwater.
+
+**Item 8: MS: 8.LS4.1
+DCI: LS4.A: Evidence of Common Ancestry and Diversity
+SEP: SEP6: Constructing Explanations
+Justification: Students synthesize investigation findings to explain how fossil evidence supports claims about extinction and evolutionary change.
+CCC: CCC1: Patterns
+Justification: Responses require recognition of biological patterns across time based on fossil evidence.
+DOK Level: 3
+Justification: Requires synthesizing findings into a scientific explanation with supporting evidence.
+
+Stimulus:
+After completing their investigation, the students summarize what they learned from analyzing the fossil layers.
+
+Question:
+Which two statements best explain what the students’ investigation shows?
+
+A) Most organisms from earlier layers are still alive today.
+B) Organisms have changed over time, and some became extinct.
+C) All fossil types can be found in every rock layer.
+D) Newer layers contain different organisms than older layers.
+E) The oldest fossils are always mammals.
+
+Answer: B, D
+
+Rationale for correct choice(s):
+B: Evidence of extinction and change across layers supports the idea of species evolving or dying out.
+D: Observing different organisms in newer layers shows that life on Earth has changed over time.
+
+Rationale for incorrect choice(s):
+A: Most earlier organisms are extinct, not still alive.
+C: Fossils vary by layer, not found everywhere.
+E: Mammals are relatively recent in fossil records.
+
+
+--
+
+
+# Evidence-Based Selected Response (EBSR)
+
+### Stimulus (Part 1):
+The emerald ash borer (EAB) is a beetle originally found in Asia. It was first discovered in the U.S. in 2002. It damages ash trees by boring under bark and laying eggs. In Asia, predators such as certain wasps help control its population, but in the U.S., these predators are not naturally present. A map shows current beetle habitats across the United States.
+
+**Item 1: Claim Selection – MC: 7.LS2.2
+DCI: LS2.C: Ecosystem Dynamics
+SEP: SEP6: Constructing Explanations
+Justification: Students must construct a plausible explanation for differing beetle population outcomes in two regions.
+CCC: CCC7: Stability and Change
+Justification: Students reason about how introducing or removing species impacts the stability of ecological systems.
+DOK Level: 2
+Justification: Requires understanding and selecting a cause-and-effect relationship based on population dynamics and ecological reasoning.
+
+Question:
+Why is the emerald ash borer able to spread more easily in the United States than in Asia?
+
+A) In the United States there are fewer predators for the emerald ash borer than there are in Asia.
+B) In Asia the emerald ash borer competes with more beetles than it does in the United States.
+C) In the United States the emerald ash borer competes with more beetles than it does in Asia.
+D) In Asia there are fewer predators for the emerald ash borer than there are in the United States.
+
+Answer: A
+
+Rationale for correct:
+A: The passage notes that natural predators like wasps are present in Asia but not in the United States.
+
+Rationale for incorrect:
+B: Beetle competition is not identified as a primary control mechanism.
+C: Incorrect reversal of roles.
+D: Opposite of what is stated in the text.
+
+**Item 2: Evidence Selection – MS: 7.LS2.2
+DCI: LS2.C: Ecosystem Dynamics, Functioning, and Resilience
+SEP: SEP7: Engaging in Argument from Evidence
+Justification: Students must select two specific text-based pieces of evidence to support a previously selected claim. This reflects scientific argumentation based on identifying and defending claims with valid evidence.
+CCC: CCC4: Systems and System Models
+Justification: Students reason about how predator–prey relationships function within a biological system.
+DOK Level: 2
+Justification: Requires citing specific evidence from the text to support an ecological claim.
+
+Question:
+Which two pieces of evidence support your answer? Select both.
+
+A) "The beetle damages trees by boring a hole and laying eggs under the bark of the tree."
+B) "In Asia there are types of wasps that lay their eggs within the beetle. The hatched larvae eventually eat the beetle."
+C) "In the United States the wasps that prey on the emerald ash borer are not naturally present."
+D) "Much of the treatment for the beetle involves quarantining wood..."
+E) "The beetle prefers ash trees and does not attack other hardwoods."
+
+Answer: B, C
+
+Rationale for correct:
+B: Establishes presence of natural control in Asia.
+C: Shows absence of control in the U.S.
+
+Rationale for incorrect:
+A: Describes beetle biology, not ecosystem relationships.
+D: Relates to human management, not ecological dynamics.
+E: Irrelevant to predator interaction.
+
+### Stimulus (Part 2):
+In Tennessee, the EAB was discovered in 2010 and has since spread across many counties. Treatment efforts in the U.S. include restricting the movement of infested wood, applying pesticides, and introducing the same wasps from Asia that lay eggs in EAB larvae.
+
+**Item 3: MC – Reasoning Selection 1: 7.LS2.2
+DCI: LS2.C: Ecosystem Dynamics
+SEP: SEP6: Constructing Explanations
+Justification: Requires students to explain a broader ecological principle—how predator absence results in unchecked population growth. This aligns with SEP6 by demanding causal reasoning and synthesis of the predator-prey model.
+CCC: CCC2: Cause and Effect
+Justification: Students must identify how a lack of natural predators leads to exponential beetle population growth—a foundational ecological cause-effect pattern.
+DOK Level: 3
+Justification: Requires explaining how and why evidence supports the claim using an ecological model.
+
+Question:
+How does the presence or absence of predators affect the emerald ash borer population?
+
+A) Predators help beetle larvae grow faster.
+B) Without predators, the beetle population grows unchecked.
+C) Predators prevent beetles from laying eggs in ash trees.
+D) Without predators, beetles become less active and reproduce less.
+
+Answer: B
+
+Rationale for correct: 
+B: Predators help control populations; their absence enables population explosions.
+
+Rationale for incorrect:
+A: Contradicts predator-prey dynamics.
+C: Incorrect mechanism — predators do not inhibit egg-laying behavior.
+D: Untrue — beetles reproduce more without predation.
+
+**Item 4: MC – Reasoning Selection 2: 7.LS2.2
+DCI: LS2.C: Ecosystem Dynamics
+SEP: SEP6: Constructing Explanations
+Justification: Students must project the long-term outcome of an ecological intervention (introducing predators), drawing on ecological understanding and using it to explain system behavior—a hallmark of SEP6.
+CCC: CCC7: Stability and Change
+Justification: Students evaluate how introducing a missing species can restore stability to an ecosystem undergoing change.
+DOK Level: 4
+Justification: Requires applying knowledge to evaluate a real-world solution strategy and predict systemic outcomes in a novel scenario.
+
+Question:
+If scientists successfully introduce Asian wasps across U.S. forests, what long-term outcome would BEST support the strategy’s effectiveness?
+
+A) Fewer ash trees die each year and beetle populations begin to stabilize.
+B) Scientists stop using pesticides completely across all forests.
+C) Beetles migrate to other hardwood trees and avoid ash altogether.
+D) Wasp populations outgrow beetles and begin damaging local crops.
+
+Answer: A
+
+Rationale for correct:
+A; The system regains stability through predator introduction, reflected by tree recovery and beetle population balance.
+
+Rationale for incorrect:
+B: Not necessarily an indicator of predator success.
+C: Implies a behavior shift not caused by wasps.
+D: Describes a new problem — destabilization, not restoration.
+
+
+---
+
+
+# Constructed Response (CR)
+
+### Constructed Response Item 1
+
+Standard Chosen:
+7.LS2.1: Develop a model to depict the cycling of matter, including carbon and oxygen, and the flow of energy among biotic and abiotic parts of an ecosystem.
+
+CR Prompt:
+Use scientific reasoning to explain how carbon and oxygen cycle through a forest ecosystem.
+
+Your response must include:
+A description of at least three components of the carbon or oxygen cycle (e.g., photosynthesis, respiration, decomposition).
+An explanation of how both biotic and abiotic factors are involved.
+A model (either written or labeled diagram) showing how matter and energy move through organisms and the environment.
+
+Component Breakdown by DOK:
+Component - DOK Level - DOK Verbs - Justification
+1. Identify and describe 3 processes	- DOK 2 - Identify, describe - Requires students to summarize and differentiate among familiar processes — beyond recall, but not requiring strategic reasoning.
+2. Explain interactions - DOK 3 - Explain, analyze - Requires students to analyze relationships between system components (biotic and abiotic) and reason through their roles.
+3. Construct a model - DOK 3 - Construct, model - Requires synthesis of ideas to produce a system-level representation; modeling demands selection and organization of relevant information.
+
+Overall DOK: 3
+
+
+Tiered Rubric:
+Tier: Description
+Exceeding (4):	Comprehensive explanation with accurate descriptions of photosynthesis, respiration, and decomposition; includes a labeled model showing biotic and abiotic interactions and matter/energy flow; uses correct terminology and strong reasoning.
+Meets (3): Accurate explanation of at least two components; includes biotic and abiotic factors with some detail; model may have minor omissions but reasoning is clear.
+Developing (2): Basic or partial explanation; may only reference biotic or abiotic factors; model is present but lacks clarity or contains some inaccuracies.
+Emerging (1): Minimal or unclear explanation with little or no scientific vocabulary; model may be missing or incorrect.
+No Response (0): No response or unrelated content.
+
+Model Student Response (Exceeding):
+In a forest ecosystem, carbon and oxygen cycle through photosynthesis, respiration, and decomposition. During photosynthesis, plants (biotic) use sunlight to convert carbon dioxide (from the air, abiotic) into oxygen and glucose. Animals (biotic) then breathe in the oxygen and perform cellular respiration, releasing carbon dioxide back into the air. When organisms die, decomposers like fungi break them down, returning carbon to the soil and air. This cycle keeps matter and energy moving through both living and nonliving parts of the ecosystem.
+
+Labeled Model (not shown here) would include arrows showing: CO₂ from air → plant (photosynthesis) → oxygen → animal (respiration) → CO₂ → decomposers → soil/air.
+
+Constructed Response Item 2
+Standard Chosen:
+6.PS3.1: Analyze the movement of heat between objects by conduction, convection, and radiation.
+
+CR Prompt:
+Use scientific reasoning to explain why one type of cup keeps a drink colder than the other based on how energy is transferred.
+
+Your response must include:
+
+- A claim about which cup is better at keeping a drink cold.
+- At least two pieces of evidence from the scenario to support your claim.
+- A reasoning section that uses scientific ideas about energy transfer, insulation, and temperature change to connect the evidence to your claim.
+
+Component Breakdown by DOK:
+Component - DOK Level - DOK Verbs - Justification
+1. Claim - DOK 1 - Identify - Requires student to make a factual determination based on presented data
+2. Evidence - DOK 2 - Cite, describe - Requires selection and summarization of relevant observational evience.
+3. Reasoning - DOK 3 - Explain, connect - Requires strategic reasoning to explain why the evidence supports the claim using scientific concepts of energy transfer and insulation.
+
+Overall DOK: 3
+
+Constructed Response Rubric Table (CER Format)
+Component - Exceeding (4) - Meeting (3)	- Developing (2) - Emerging (1) - No Response (0)
+1. Claim - Makes a clear, specific, and accurate claim that fully answers the question.	- Makes a clear and accurate claim that answers the question. - Makes a vague or partially correct claim that only somewhat answers the question. - Makes an inaccurate, confused, or off-topic claim.	No claim provided.
+2. Evidence - Provides multiple, relevant, and specific pieces of evidence that directly support the claim. Shows thoughtful attention to detail or patterns in the data. - Provides at least one piece of relevant evidence that supports the claim. - Provides weak, vague, or loosely connected evidence. - Provides minimal, unrelated, or incorrect evidence.	- No evidence provided.
+3. Reasoning - Clearly explains how the evidence supports the claim using appropriate scientific thinking. The explanation is logical, thorough, and well-structured. - Explains the connection between claim and evidence, though some ideas may be basic or lack depth. - Attempts reasoning, but the connection is unclear, incomplete, or contains errors. - Reasoning is missing or does not make sense.
+
+Model Student Response (Exceeding)
+Claim:
+The foam cup is better at keeping drinks cold than the metal cup.
+
+Evidence:
+- After one hour, the water in the foam cup is colder (6°C) and still contains ice, while the metal cup’s water is warmer (18°C) and most ice has melted.
+- The outside of the metal cup feels warm, but the foam cup feels cool.
+
+Reasoning:
+The foam cup slows the transfer of energy from the warm air outside to the cold water inside because it is a better insulator. Insulators reduce conduction, which is the transfer of heat through direct contact. Since less energy moved into the foam cup, the ice melted more slowly. In contrast, the metal cup allowed energy to pass through more easily, warming the water faster. This demonstrates how different materials affect energy transfer and temperature change.
