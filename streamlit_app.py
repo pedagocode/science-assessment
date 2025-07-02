@@ -32,8 +32,8 @@ except ImportError:
 # Load environment variables
 load_dotenv()
 # Add your OpenAI API key to .env as OPENAI_API_KEY=sk-...
-openai_api_key = os.getenv("OPENAI_API_KEY")
-openai.api_key = openai_api_key
+# openai_api_key = os.getenv("OPENAI_API_KEY")
+# openai.api_key = openai_api_key
 
 def clean_extracted_text(text: str) -> str:
     """Clean and format extracted PDF text."""
