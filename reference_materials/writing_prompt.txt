@@ -26,13 +26,13 @@ You are creating a set of science assessment items for {grade}, grounded in the 
 1.3. Immediately after the item type, state the full standard code that aligns with the item.
 
 2. NGSS Dimensions
-2.1. List the DCI (code and description), SEP (code and short name), and CCC (code and short name) addressed by the item.
+2.1. List the DCI (code and description), SEP (code and short name), and CCC (code and short name) addressed by the item. When identifying these, reference the 3D NGSS information provided above (from {3D NGSS.pdf}).
 2.2. For each dimension, provide a justification:
 2.2.1. SEP: List the SEP code and short name first, then directly under it present a justification for why that SEP is reflected in the cognitive work of the item.
 2.2.2. CCC: List the CCC code and short name first, then directly under it present a justification for how this CCC shapes the reasoning required to answer the item.
 
 3. DOK Level
-3.1. State the DOK level (1, 2, 3, or 4, as appropriate) explicitly.
+3.1. State the DOK level (1, 2, 3, or 4, as appropriate) explicitly. When identifying the DOK level, reference the DOK Levels information provided above (from {DOK Levels.pdf}).
 3.2. Provide a justification for why this DOK level fits the cognitive demand of the task.
 
 4. Stimulus and Visuals
@@ -779,6 +779,3 @@ Rubric:
 8. Content Targets: Does the item use and address content from the following?
 8.1. Standards: {standards}
 8.2. What students will do (Will-Do): {will_do}
-
-# # MODEL EXEMPLARS #
-# {model_exemplars}
