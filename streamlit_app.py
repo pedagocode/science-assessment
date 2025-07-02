@@ -73,8 +73,16 @@ def load_references(grade: str) -> tuple[str, str, str]:
     # except FileNotFoundError:
     #     main_text = ""
     main_text = ""
-    ngss_text = extract_pdf_content("reference_materials/3D NGSS.pdf") or ""
-    dok_text = extract_pdf_content("reference_materials/DOK Levels.pdf") or ""
+    try:
+        ngss_text = extract_pdf_content("reference_materials/3D NGSS.pdf") or ""
+    except Exception as e:
+        logger.error(f"Error extracting 3D NGSS.pdf: {e}")
+        ngss_text = f"[ERROR: Could not extract 3D NGSS.pdf: {e}]"
+    try:
+        dok_text = extract_pdf_content("reference_materials/DOK Levels.pdf") or ""
+    except Exception as e:
+        logger.error(f"Error extracting DOK Levels.pdf: {e}")
+        dok_text = f"[ERROR: Could not extract DOK Levels.pdf: {e}]"
     return main_text, ngss_text, dok_text
 
 def get_response(
@@ -316,7 +324,9 @@ else:
             )
             st.markdown(all_results, unsafe_allow_html=True)
         except Exception as e:
-            st.error(f"An error occurred: {e}")
-            logger.error(f"Error generating assessment: {e}")
+            import traceback
+            tb = traceback.format_exc()
+            st.error(f"An error occurred: {e}\n\nTraceback:\n{tb}")
+            logger.error(f"Error generating assessment: {e}\n{tb}")
     elif not all([grade, unit, item_type, num_items, standards, will_do]):
         st.warning("Please fill in all fields.")
