@@ -188,8 +188,28 @@ with r1c2:
 
 
 
+if 'last_params' not in st.session_state:
+    st.session_state['last_params'] = None
+if 'last_results' not in st.session_state:
+    st.session_state['last_results'] = None
+
+params = (grade, unit, item_type, num_items, standards, will_do)
+
 if st.button("Generate Assessment"):
-    if all([grade, unit, item_type, num_items, standards, will_do]):
+    st.session_state['last_params'] = params
+    st.session_state['last_results'] = None
+
+if st.session_state.get('last_params') == params and st.session_state.get('last_results') is not None:
+    all_results, file_name, buffer = st.session_state['last_results']
+    st.download_button(
+        label="Download as Word (.docx)",
+        data=buffer,
+        file_name=file_name,
+        mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+    )
+    st.markdown(all_results, unsafe_allow_html=True)
+else:
+    if st.session_state.get('last_params') == params:
         import re
         from docx import Document
         all_results = ""
@@ -287,6 +307,7 @@ if st.button("Generate Assessment"):
             doc.save(buffer)
             buffer.seek(0)
             status_placeholder.success("Item generation complete!")
+            st.session_state['last_results'] = (all_results, file_name, buffer)
             st.download_button(
                 label="Download as Word (.docx)",
                 data=buffer,
@@ -297,5 +318,5 @@ if st.button("Generate Assessment"):
         except Exception as e:
             st.error(f"An error occurred: {e}")
             logger.error(f"Error generating assessment: {e}")
-    else:
+    elif not all([grade, unit, item_type, num_items, standards, will_do]):
         st.warning("Please fill in all fields.")
