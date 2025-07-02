@@ -521,7 +521,7 @@ Use the rubric table below to evaluate CER responses. Each row addresses one CER
 
 5. Evidence-Based Selected Response (EBSR)
 5.1. Structural Requirements
-5.1.1. Item Components. EBSR items consist of two Parts (A and B), with two items each:
+5.1.1. Item Components. EBSR items MUST consist of two Parts (A and B), with two item types each:
 5.1.1.1. Part A:
 5.1.1.1.1. A1: Claim (MC)
 5.1.1.1.1.1. Students select one correct scientific claim based on the Part A stimulus.
