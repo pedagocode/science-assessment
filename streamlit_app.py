@@ -8,6 +8,7 @@ import streamlit as st
 from dotenv import load_dotenv
 
 import openai
+import pandas as pd
 
 # Setup logging
 logging.basicConfig(level=logging.INFO)
@@ -146,19 +147,24 @@ st.markdown(
 Refer to the appropriate tab in this [spreadsheet](https://docs.google.com/spreadsheets/d/1lXPIsCrwuEH3yAaj5xR56-FloC-pXU03L7gdh4Qe7bg/edit?usp=sharing) and copy into the corresponding textboxes.
     """
 )
-
+standards = pd.read_csv("reference_materials/standards.csv")
+# Ensure grade_unit is string for matching
+if 'grade_unit' in standards.columns:
+    standards['grade_unit'] = standards['grade_unit'].astype(str)
 # UI Row 1: Grade, Unit, Item Type, Number of Items
 col1, col2, col3, col4 = st.columns(4)
 with col1:
     grade = st.selectbox(
         "Grade Level:",
-        [f"Grade {i}" for i in range(6, 9)] + ["Biology", "Chemistry", "Physics"] + [f"Grade {i}" for i in range(1, 6)]
+        [f"{i}" for i in range(6, 9)]
     )
 with col2:
     unit = st.selectbox(
         "Unit:",
-        [f"Unit {i}" for i in range(1, 8)]
+        [f"{i}" for i in range(1, 7)]
     )
+    grade_unit = f"{grade}.{unit}"
+    
 with col3:
     item_type = st.selectbox(
         "Item Type:",
@@ -187,10 +193,20 @@ with col4:
             list(range(3, 11))
         )
 
-# UI Row 2: Standards & Figure Out
+
+# UI Row 2: Standards (selection) & Figure Out
 r1c1, r1c2 = st.columns(2)
 with r1c1:
-    standards = st.text_area("Standards:", height=150)
+    
+    # Filter standards DataFrame for the selected grade_unit
+    filtered_standards = standards[standards['grade_unit'] == grade_unit] if 'grade_unit' in standards.columns else standards
+    standard_options = filtered_standards['Standards'].tolist() if 'Standards' in filtered_standards.columns else []
+
+    if standard_options:
+        standards_selected = st.selectbox("Select Standards:", options=standard_options)
+        standards = '\n'.join(standards_selected)
+    else:
+        standards = st.text_area("Standards (no standards found for this grade/unit):", height=150)
 with r1c2:
     will_do = st.text_area("What Students Will Do:", height=150)
 
