@@ -208,7 +208,13 @@ with r1c1:
     else:
         standards = st.text_area("Standards (no standards found for this grade/unit):", height=150)
 with r1c2:
-    will_do = st.text_area("What Students Will Do:", height=150)
+    will_dos = pd.read_csv("reference_materials/will_do.csv", encoding='latin-1')
+    # convert grade_unit to string
+    will_dos['grade_unit'] = will_dos['grade_unit'].astype(str)
+    # filter will_dos for the selected grade_unit
+    filtered_will_dos = will_dos[will_dos['grade_unit'] == grade_unit] if 'grade_unit' in will_dos.columns else will_dos
+    will_do = filtered_will_dos.iloc[0]['will_do'] if 'will_do' in filtered_will_dos.columns else ''
+    st.text_area("What Students Will Do:", value=will_do, height=150)
 
 
 
