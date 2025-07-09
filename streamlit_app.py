@@ -127,7 +127,7 @@ def get_response(
         te_type=te_type
     )
     response = openai.chat.completions.create(
-        model="gpt-4-1106-preview",
+        model="gpt-4.1-mini",
         messages=[
             {"role": "system", "content": "You are a science assessment writer who exactly replicates official state assessment style and format. Output ONLY the questions and their solutions."},
             {"role": "user", "content": prompt}
