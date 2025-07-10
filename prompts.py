@@ -73,3 +73,108 @@ Provide a complete CER response that meets the Exceeding level:
 - The reasoning clearly connects the evidence to the claim using appropriate and grade-level scientific principles
 - No part of the response should come directly from the stimulus unless it’s data being cited
 """
+
+MC_PROMPT = """# MULTIPLE CHOICE (MC) ITEM PROMPT #
+
+# CONTEXT #
+You are creating a multiple-choice (MC) science assessment item for grade {grade}, grounded in the 3D NGSS framework (DCI, SEP, CCC) and aligned to the Depth of Knowledge (DOK) level appropriate for that grade.
+
+## 1. References (for item creation only)
+1.1. 3D NGSS Reference: {ngss_ref}  
+1.2. DOK Levels Reference: {dok_ref}
+
+## 2. Content Hierarchy
+2.1. Standard: {standard}
+2.2. What Students Will Do: {will_do}
+
+## 3. Preliminary Work
+3.1. Review the standard and Will Do.  
+3.2. Identify 1–2 core scientific skills students need to demonstrate.  
+3.3. Ensure these skills reflect the DCI, SEP, CCC, and an appropriate DOK level.
+
+# FORMATTING REQUIREMENTS #
+You must follow this exact structure and formatting:
+
+Item X: MC: [Standard Code]
+
+DCI: [DCI Code and Description]  
+Justification: [1–2 sentences explaining how this DCI is demonstrated by student thinking in this item]
+
+SEP: [SEP Code and Short Name]  
+Justification: [1–2 sentences explaining how this SEP is required by the task]
+
+CCC: [CCC Code and Short Name]  
+Justification: [1–2 sentences explaining how this CCC shapes student reasoning in this item]
+
+DOK Level: [1, 2, or 3]  
+Justification: [1–2 sentences explaining why the thinking required aligns to this DOK level]
+
+Stimulus:  
+[A brief 1–2 sentence scenario that introduces a real-world phenomenon or situation relevant to the standard]  
+[Visual Description: Describe any diagram, graph, model, or visual used. If no visual is included, omit this line.]
+
+Question:  
+[Write one clear question that targets a key concept or reasoning process]
+
+A) [Option A]  
+B) [Option B]  
+C) [Option C]  
+D) [Option D]
+
+Answer: [Letter]
+
+Rationale for correct choice(s):  
+[Letter]) [Explain why the correct answer is scientifically valid and aligned with DCI, SEP, and CCC]
+
+Rationale for incorrect choice(s):  
+[Letter]) [Explain why each incorrect choice is wrong, referencing misconceptions, flawed reasoning, or misinterpretations of the stimulus or model]
+
+# ITEM CREATION RULES #
+- The item must assess reasoning or application, not recall.  
+- The stimulus must be grounded in a real-world or observable phenomenon.  
+- If a visual is included, it must serve a reasoning purpose (not decoration).  
+- All language must be grade-appropriate and free of jargon.  
+- Every answer option (A–D) must have a complete rationale.  
+- Do NOT label any rationale as “Correct” or “Incorrect.”  
+- Distractors must be scientifically plausible and based on:
+  - Common student misconceptions  
+  - Flawed logic tied to the SEP or CCC  
+  - Misinterpretation of the model or stimulus  
+
+# OPTIONAL EXAMPLE STRUCTURE (Do NOT copy directly—use as a structural model only) #
+Item 1: MC: MS-LS2-1
+
+DCI: LS2.A: Interdependent Relationships in Ecosystems  
+Justification: The item assesses how changes in one population affect others in a food web, reflecting interdependence within ecosystems.
+
+SEP: SEP2: Developing and Using Models  
+Justification: Students interpret a food chain model to predict outcomes from population changes.
+
+CCC: CCC4: Systems and System Models  
+Justification: The food chain is a model representing a system. Understanding the system requires reasoning about how parts influence one another.
+
+DOK Level: 2  
+Justification: Students must use reasoning to interpret the model and predict changes, which requires more than recall but is not complex synthesis.
+
+Stimulus:  
+A diagram shows a pond food chain: algae → small fish → large fish → heron. A disease reduces the small fish population.  
+[Visual Description: Arrow diagram of the pond food chain, with a red “X” over small fish.]
+
+Question:  
+What is the most likely effect on the pond ecosystem?
+
+A) The algae population will increase.  
+B) The large fish population will increase.  
+C) The heron will eat more algae.  
+D) The pond water will dry up.
+
+Answer: A
+
+Rationale for correct choice(s):  
+A) With fewer small fish to eat them, algae populations would likely increase due to reduced predation.
+
+Rationale for incorrect choice(s):  
+B) Large fish depend on small fish; fewer small fish means their food source is limited.  
+C) Herons don’t eat algae; this is not supported by the food chain.  
+D) Water levels are unrelated to food web interactions in this context.
+"""
