@@ -10,6 +10,8 @@ from dotenv import load_dotenv
 import openai
 import pandas as pd
 
+from prompts import CR_PROMPT, MC_PROMPT
+
 # Setup logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -32,9 +34,6 @@ except ImportError:
 
 # Load environment variables
 load_dotenv()
-# Add your OpenAI API key to .env as OPENAI_API_KEY=sk-...
-# openai_api_key = os.getenv("OPENAI_API_KEY")
-# openai.api_key = openai_api_key
 
 def clean_extracted_text(text: str) -> str:
     """Clean and format extracted PDF text."""
@@ -66,14 +65,7 @@ def extract_pdf_content(pdf_path: str) -> Optional[str]:
         return None
 
 def load_references(grade: str) -> tuple[str, str, str]:
-    """Load main, 3D NGSS, and DOK Levels reference texts."""
-    # Remove TCAP references; use model_exemplars.txt as the main reference
-    # try:
-    #     with open("reference_materials/model_exemplars.txt", "r", encoding="utf-8") as f:
-    #         main_text = f.read()
-    # except FileNotFoundError:
-    #     main_text = ""
-    main_text = ""
+    """Load 3D NGSS, and DOK Levels reference texts."""
     try:
         ngss_text = extract_pdf_content("reference_materials/3D NGSS.pdf") or ""
     except Exception as e:
@@ -84,48 +76,31 @@ def load_references(grade: str) -> tuple[str, str, str]:
     except Exception as e:
         logger.error(f"Error extracting DOK Levels.pdf: {e}")
         dok_text = f"[ERROR: Could not extract DOK Levels.pdf: {e}]"
-    return main_text, ngss_text, dok_text
+    return ngss_text, dok_text
 
 def get_response(
     grade: str,
-    unit: str,
     item_type: str,
     num_items: int,
     standards: str,
     will_do: str,
-    item_start: int = None,
-    item_end: int = None,
-    batch_num: int = None,
-    te_type: str = ""
 ) -> str:
     """Generate assessment content using the OpenAI GPT-4o model with updated prompt."""
-    main_ref, ngss_ref, dok_ref = load_references(grade)
-    # Read the writing prompt template from reference_materials
-    with open("reference_materials/writing_prompt.txt", "r", encoding="utf-8") as f:
-        prompt_template = f.read()
-    # Read model exemplars from reference_materials/model_exemplars.txt if it exists
-    # model_exemplars = ""
-    # try:
-    #     with open("reference_materials/model_exemplars.txt", "r", encoding="utf-8") as f:
-    #         model_exemplars = f.read()
-    # except FileNotFoundError:
-    #     model_exemplars = ""
-    model_exemplars = ""
+    ngss_ref, dok_ref = load_references(grade)
+    if item_type == "Constructed Response":
+        prompt_template = CR_PROMPT
+    elif item_type == "Multiple Choice":
+        prompt_template = MC_PROMPT
+    else:
+        prompt_template = ''
+
     prompt = prompt_template.format(
         grade=grade,
-        unit=unit,
-        item_type=item_type,
         num_items=num_items,
-        standards=standards,
+        standard=standards,
         will_do=will_do,
-        main_ref=main_ref,
         ngss_ref=ngss_ref,
         dok_ref=dok_ref,
-        item_start=item_start if item_start is not None else "",
-        item_end=item_end if item_end is not None else "",
-        batch_num=batch_num if batch_num is not None else "",
-        model_exemplars=model_exemplars,
-        te_type=te_type
     )
     response = openai.chat.completions.create(
         model="gpt-4.1-mini",
@@ -208,7 +183,13 @@ with r1c1:
     else:
         standards = st.text_area("Standards (no standards found for this grade/unit):", height=150)
 with r1c2:
-    will_do = st.text_area("What Students Will Do:", height=150)
+    will_dos = pd.read_csv("reference_materials/will_do.csv", encoding='latin-1')
+    # convert grade_unit to string
+    will_dos['grade_unit'] = will_dos['grade_unit'].astype(str)
+    # filter will_dos for the selected grade_unit
+    filtered_will_dos = will_dos[will_dos['grade_unit'] == grade_unit] if 'grade_unit' in will_dos.columns else will_dos
+    will_do = filtered_will_dos.iloc[0]['will_do'] if 'will_do' in filtered_will_dos.columns else ''
+    st.text_area("What Students Will Do:", value=will_do, height=150)
 
 
 
@@ -296,12 +277,12 @@ else:
                         for line in ebsr_result.split("\n"):
                             doc.add_paragraph(line)
                 file_name = f"{grade} {unit} {item_type} Sets.docx"
-            elif item_type == "Constructed Response":
-                status_placeholder.info("Generating Constructed Response items...")
+            elif item_type in ["Constructed Response", "Multiple Choice"]:
+                status_placeholder.info(f"Generating {item_type} items...")
                 for cr_num in range(1, num_items + 1):
-                    with st.spinner(f"Generating CR Item {cr_num}..."):
+                    with st.spinner(f"Generating {item_type} Item {cr_num}..."):
                         cr_result = get_response(
-                            grade, unit, item_type, 1, standards, will_do, ""
+                            grade, item_type, 1, standards, will_do
                         )
                         all_results += cr_result + "\n\n"
                         for line in cr_result.split("\n"):
