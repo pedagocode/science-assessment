@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 import openai
 import pandas as pd
 
-from prompts import CR_PROMPT
+from prompts import CR_PROMPT, MC_PROMPT
 
 # Setup logging
 logging.basicConfig(level=logging.INFO)
@@ -89,6 +89,8 @@ def get_response(
     ngss_ref, dok_ref = load_references(grade)
     if item_type == "Constructed Response":
         prompt_template = CR_PROMPT
+    elif item_type == "Multiple Choice":
+        prompt_template = MC_PROMPT
     else:
         prompt_template = ''
 
@@ -275,10 +277,10 @@ else:
                         for line in ebsr_result.split("\n"):
                             doc.add_paragraph(line)
                 file_name = f"{grade} {unit} {item_type} Sets.docx"
-            elif item_type == "Constructed Response":
-                status_placeholder.info("Generating Constructed Response items...")
+            elif item_type in ["Constructed Response", "Multiple Choice"]:
+                status_placeholder.info(f"Generating {item_type} items...")
                 for cr_num in range(1, num_items + 1):
-                    with st.spinner(f"Generating CR Item {cr_num}..."):
+                    with st.spinner(f"Generating {item_type} Item {cr_num}..."):
                         cr_result = get_response(
                             grade, item_type, 1, standards, will_do
                         )
