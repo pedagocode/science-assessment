@@ -344,3 +344,92 @@ Part 2 – Item 4: MC – Application
 - Flawed logic or reasoning
 - Misinterpretation of models or stimulus
 """
+
+TE_PROMPT = """
+# CONTEXT
+You are creating a Technology-Enhanced (TE) science assessment item set for Grade {grade}, grounded in the 3D NGSS framework (DCI, SEP, CCC) and aligned to the Depth of Knowledge (DOK) level appropriate for that grade.
+
+Each standard provided below must have one TE item for each of the following interaction subtypes:
+- Drag-and-Drop
+- Hot Spot (click to identify)
+- Inline Choice (dropdown)
+- Graphing or Model Construction
+
+This will result in 4 items per standard.
+
+## 1. References (for prompt context only)
+- 3D NGSS Reference: {ngss_ref}
+- DOK Levels Reference: {dok_ref}
+
+## 2. Content Hierarchy
+- Standard: {standard}
+- What students will do (Will-Do): {will_do}
+
+## 3. Preliminary Steps
+1. Review the Standards and Will-Do
+2. Select 1 real-world phenomenon or system per standard that lends itself to all 4 TE subtypes
+3. Map each interaction type to a reasoning task aligned to the standard and DOK level
+4. For each interaction type, ensure the task emphasizes 3D NGSS integration and results in a clearly scorable output
+5. Use phenomena, simulations, or diagrams that are grade-appropriate and instructionally meaningful
+
+---
+
+## 4. ITEM FORMAT (Use for Each of the 4 Items Per Standard)
+
+ 4.1. Item Header
+- Item X: TE - {{interaction_type}}: {{standard_code}}
+- DCI: {{dci_code}} – {{dci_description}}
+- SEP: {{sep_code}} – {{sep_name}}
+- Justification: {{sep_justification}}
+- CCC: {{ccc_code}} – {{ccc_name}}
+- Justification: {{ccc_justification}}
+- DOK Level: {{dok_level}}
+- Justification: {{dok_justification}}
+
+4.2. Stimulus
+1. Phenomenon or Scenario: Write a 3–4 sentence stimulus that introduces the phenomenon in a relatable, real-world context. The writing should:
+- Be student-friendly and grade-appropriate
+- Describe a simple event or observation involving the phenomenon, not the explanation.
+- Reflect everyday experiences, classroom labs, or media-based curiosity.
+- Avoid technical terms unless they appear naturally (e.g., ‘carbon dioxide’ instead of ‘CO₂’ unless contextually relevant).
+- End in a way that sets up the need to model, analyze, or explain what’s happening.
+- Use second-person (“you”) or third-person (“a class,” “a student”) to keep it engaging.
+- Ensure all information necessary to answer the item is present in the stimulus and/or visual; avoid requiring outside knowledge beyond grade-level expectations.
+
+2. Visual Description: Describe a labeled diagram, model, graph, or visual zone. Ensure it directly supports the student task.
+- Write a detailed visual description for a technology-enhanced science assessment item. The description should go beyond basic labels and provide a fully immersive, sensory-rich representation of the visual stimulus.
+- The tone should be precise, vivid, and instructional — like you're describing a screenshot for an item developer or simulation engineer. Do not leave anything to assumption.
+
+4.3. Task Prompt
+Provide a directive that aligns with the interaction type:
+1. Drag-and-Drop: "Drag each label to the correct part of the system to show…"
+- Define both draggable items and labeled drop targets.
+2. Hot Spot: "Click on the part of the diagram/system that shows…"
+- Define clickable zones and what constitutes a correct selection.
+3. Inline Choice: "Use the dropdowns to complete the explanation/model that best describes…"
+- Embed dropdowns in a meaningful explanation or visual; define each option and correct choice.
+4. Graphing: "Plot the data from the table to show…"
+- Define the x/y axes, graph type, variables, or parts of the model to be constructed.
+
+All prompts must clearly state the task and align to specific scientific reasoning.
+
+4.4. Correct Response and Scoring
+- Correct Response Criteria: Explicitly define what a correct answer looks like for the interaction type (labels, click zones, dropdown choices, plotted data, or model elements).
+- Scoring Rule: Specify how full credit and partial credit are awarded.
+- Scientific Rationale: Provide a brief explanation of why the correct response is scientifically valid, using 3D reasoning (DCI + SEP + CCC).
+- Distractor Rationale: Identify the most likely incorrect responses and explain the misconception or error in reasoning they reflect.
+
+5. GENERAL REQUIREMENTS FOR ALL ITEMS
+All four interaction types must be instructionally necessary and tied to the SEP or CCC reasoning in the standard
+- Do not reuse a multiple-choice item format disguised as TE
+- All interactions must be auto-scorable or clearly rubric-scored
+- Visuals, simulations, or diagrams must be necessary for completing the task (not decorative)
+- Inline Choice items should never be vague; dropdowns must be embedded in rich context and scaffold reasoning
+- All items must be answerable using only the information provided in the stimulus and visual. Do not assume students have prior knowledge beyond what is introduced in the text or diagram
+
+6. REPEAT FOR EACH STANDARD
+For each standard:
+- Create 4 items using the format above
+- Number each sequentially (e.g., Item 1, Item 2, ...)
+- All items must share a common phenomenon but focus on different reasoning tasks
+"""

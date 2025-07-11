@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 import openai
 import pandas as pd
 
-from prompts import CR_PROMPT, MC_PROMPT, MS_PROMPT, EBSR_PROMPT
+from prompts import CR_PROMPT, MC_PROMPT, MS_PROMPT, EBSR_PROMPT, TE_PROMPT
 
 # Setup logging
 logging.basicConfig(level=logging.INFO)
@@ -95,6 +95,8 @@ def get_response(
         prompt_template = MS_PROMPT
     elif item_type == "Evidence-Based":
         prompt_template = EBSR_PROMPT
+    elif item_type == "Technology Enhanced":
+        prompt_template = TE_PROMPT
     else:
         prompt_template = ''
 
@@ -281,7 +283,7 @@ else:
                         for line in ebsr_result.split("\n"):
                             doc.add_paragraph(line)
                 file_name = f"{grade} {unit} {item_type} Sets.docx"
-            elif item_type in ["Constructed Response", "Multiple Choice", "Multiple Select"]:
+            elif item_type in ["Constructed Response", "Multiple Choice", "Multiple Select", "Technology Enhanced"]:
                 status_placeholder.info(f"Generating {item_type} items...")
                 for cr_num in range(1, num_items + 1):
                     with st.spinner(f"Generating {item_type} Item {cr_num}..."):
