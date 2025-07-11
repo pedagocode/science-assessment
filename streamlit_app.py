@@ -241,7 +241,7 @@ else:
                 for cluster_num in range(1, num_items + 1):
                     # 2 MC
                     with st.spinner(f"Generating Cluster {cluster_num} Items 1–2 (MC)..."):
-                        for i in range(2):
+                        for _ in range(2):
                             batch_mc = get_response(
                                 grade, "Multiple Choice", standards, will_do
                             )
