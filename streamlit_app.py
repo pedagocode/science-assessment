@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 import openai
 import pandas as pd
 
-from prompts import CR_PROMPT, MC_PROMPT, MS_PROMPT, EBSR_PROMPT, TE_PROMPT, TE_SUBTYPES
+from prompts import CR_PROMPT, MC_PROMPT, MS_PROMPT, EBSR_PROMPT, TE_PROMPT
 
 # Setup logging
 logging.basicConfig(level=logging.INFO)
