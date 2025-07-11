@@ -226,3 +226,121 @@ You are creating a set of science assessment items for grade {grade}, grounded i
 - Justify SEP, CCC, and DOK alignment.  
 - Follow all distractor design and stimulus clarity rules.
 """
+
+EBSR_PROMPT = """#EVIDENCE-BASED SELECTED RESPONSE (EBSR) ITEM PROMPT#
+
+#CONTEXT#
+You are designing an Evidence-Based Selected Response (EBSR) science item cluster for Grade {grade}, aligned to the 3D NGSS framework (DCI, SEP, CCC) and the appropriate Depth of Knowledge (DOK) levels.
+
+This EBSR cluster includes:
+- Two related phenomena (Part 1 and Part 2)
+- Four total items (two per part):
+
+Part 1
+- Stimulus: Phenomenon 1 (5–6 sentences)
+- Item 1: Multiple Choice (MC) – Claim selection
+- Item 2: Multiple Select (MS) – Evidence selection (select 2 of 5)
+
+Part 2
+- Stimulus: Phenomenon 2 (5–6 sentences, related but not identical)
+- Item 3: Multiple Choice (MC) – Reasoning explanation
+- Item 4: Multiple Choice (MC) – Application or prediction
+
+1. References (for item creation only)
+1.1. 3D NGSS Reference: {ngss_ref}
+1.2. DOK Levels Reference: {dok_ref}
+
+2. Content Hierarchy
+2.1. Standard: {standard}
+2.2. What Students Will Do: {will_do}
+
+3. Preliminary Work
+3.1. Review the standard and Will-Do.
+3.2. Identify 1–2 core scientific skills students need to demonstrate.
+3.3. Ensure these skills reflect the DCI, SEP, CCC, and an appropriate DOK level.
+
+#STIMULUS FORMAT#
+Part 1: Phenomenon
+Write a 5–6 sentence paragraph describing a real-world, observable scientific phenomenon. It should involve:
+- Measurable changes or interactions
+- Relationships in systems, organisms, or environments
+- Enough detail to support claim and evidence reasoning (Items 1 and 2)
+
+If using a visual, include the following:
+
+Visual Description:
+Write a detailed, sensory-rich description of a labeled diagram, graph, or model. Be precise and instructional, like describing a simulation to a developer. Specify:
+- Axes, units, labels, colors, flows, spatial layout
+- Movement, changes over time, interactions
+
+Part 2: Continued Phenomenon
+Write another 5–6 sentence paragraph that continues the scenario. This must:
+- Be clearly related but not identical to Part 1
+- Introduce a system change, human intervention, or environmental shift
+- Provide reasoning context for Items 3 and 4
+
+Include an updated Visual Description if needed (e.g., new conditions, populations, treatment areas, etc.).
+#ITEM FORMAT (USE FOR EACH ITEM)#
+Item X: [Type]: [Standard Code]
+DCI: [Code and Description]
+Justification: [How the concept is demonstrated]
+SEP: [Code and Name]
+Justification: [How students engage with this practice]
+CCC: [Code and Name]
+Justification: [How this shapes the reasoning task]
+DOK Level: [1–4]
+Justification: [Why this level applies]
+
+Stimulus:
+[Copy the relevant Part 1 or Part 2 stimulus]
+
+Visual Description:
+[Only if used; include full descriptive detail]
+
+Question:
+[Write a clear, grade-appropriate question]
+
+A) [Option A]
+B) [Option B]
+C) [Option C]
+D) [Option D]
+E) [Option E] (MS only)
+
+Answer(s): [Correct letter(s)]
+
+Rationale for A:
+[Explain reasoning or flaw]
+Rationale for B:
+[...]
+Rationale for C:
+[...]
+Rationale for D:
+[...]
+Rationale for E:
+[...] (only for MS)
+
+#ITEM TYPE GUIDANCE#
+Part 1 – Item 1: MC – Claim
+- Ask for the most accurate scientific claim based on Phenomenon 1.
+
+Part 1 – Item 2: MS – Evidence
+- Ask for two valid pieces of evidence supporting the claim. Provide 5 total choices.
+
+Part 2 – Item 3: MC – Reasoning
+- Ask students to explain how or why the system behaves based on the continued scenario.
+
+Part 2 – Item 4: MC – Application
+- Ask students to predict the outcome or evaluate the impact of a solution or change in Part 2. Aim for DOK 3–4.
+
+#ITEM WRITING RULES#
+1. Each stimulus must be 5–6 sentences
+2. Visuals must support reasoning and be described with precision
+3. All MC and MS items must include:
+- DCI, SEP, CCC, and DOK metadata with 1–2 sentence justifications
+- A complete rationale for every answer option
+4. Do NOT assess recall-only content
+5. Distractors must be based on:
+- Common student misconceptions
+- Flawed logic or reasoning
+- Misinterpretation of models or stimulus
+"""

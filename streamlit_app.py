@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 import openai
 import pandas as pd
 
-from prompts import CR_PROMPT, MC_PROMPT, MS_PROMPT
+from prompts import CR_PROMPT, MC_PROMPT, MS_PROMPT, EBSR_PROMPT
 
 # Setup logging
 logging.basicConfig(level=logging.INFO)
@@ -93,6 +93,8 @@ def get_response(
         prompt_template = MC_PROMPT
     elif item_type == "Multiple Select":
         prompt_template = MS_PROMPT
+    elif item_type == "Evidence-Based":
+        prompt_template = EBSR_PROMPT
     else:
         prompt_template = ''
 
@@ -273,7 +275,7 @@ else:
                 for ebsr_num in range(1, num_items + 1):
                     with st.spinner(f"Generating EBSR Set {ebsr_num}..."):
                         ebsr_result = get_response(
-                            grade, unit, item_type, 1, standards, will_do, ""
+                            grade, item_type, 1, standards, will_do
                         )
                         all_results += ebsr_result + "\n\n"
                         for line in ebsr_result.split("\n"):
