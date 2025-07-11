@@ -75,7 +75,7 @@ Provide a complete CER response that meets the Exceeding level:
 - No part of the response should come directly from the stimulus unless it’s data being cited
 """
 
-MC_PROMPT = """#
+MC_PROMPT = """
 # CONTEXT #
 You are creating a multiple-choice (MC) science assessment item for grade {grade}, 
 grounded in the 3D NGSS framework (DCI, SEP, CCC) and aligned to the Depth of Knowledge (DOK) level appropriate for the grade.
@@ -440,18 +440,23 @@ For each standard:
 - All items must share a common phenomenon but focus on different reasoning tasks
 """
 
+# TODO: not really used
 CLUSTER_PROMPT = """
-You are designing a cluster science assessment item for **{{grade}}**, grounded in the **3D NGSS framework** (DCI, SEP, CCC). The cluster integrates multiple item types (e.g., MC, MS, TE) around a coherent phenomenon or real-world scenario, and must reflect three-dimensional learning through clear **DCI**, **SEP**, and **CCC** alignment.
+# CONTEXT
+You are designing a cluster science assessment item for grade {grade}, 
+grounded in the 3D NGSS framework (DCI, SEP, CCC). 
+The cluster integrates multiple item types (e.g., MC, MS, TE) around a coherent phenomenon or real-world scenario,
+ and must reflect three-dimensional learning through clear DCI, SEP, and CCC alignment.
 
 ## REFERENCES (for item creation only)
 
-- **3D NGSS Reference**: {{ngss_ref}}
-- **DOK Levels Reference**: {{dok_ref}}
+- 3D NGSS Reference: {ngss_ref}
+- DOK Levels Reference: {dok_ref}
 
 ## CONTENT HIERARCHY
 
-- **Standard**: {{standard}}
-- **What Students Will Do**: {{will_do}}
+- Standard: {standard}
+- What Students Will Do: {will_do}
 
 ## PRELIMINARY WORK
 
