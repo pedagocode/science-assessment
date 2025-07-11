@@ -1,8 +1,9 @@
 CR_PROMPT = """
-#CONSTRUCTED RESPONSE (CR) ITEM PROMPT#
-
 #CONTEXT#
-You are designing a Constructed Response (CR) science assessment item for grade {grade}, aligned to the 3D NGSS framework (DCI, SEP, CCC). The CR must follow a Claim-Evidence-Reasoning (CER) structure and be solvable using only the information provided in the stimulus (for evidence) and the student’s own scientific knowledge (for reasoning). The stimulus must not include or hint at the claim or reasoning.
+You are an expert in designing a Constructed Response (CR) science assessment item for grade {grade}, 
+aligned to the 3D NGSS framework (DCI, SEP, CCC). The CR must follow a Claim-Evidence-Reasoning (CER) structure 
+and be solvable using only the information provided in the stimulus (for evidence) and the student’s own scientific knowledge (for reasoning). 
+The stimulus must not include or hint at the claim or reasoning.
 
 1. References (for item creation only)
 1.1. 3D NGSS Reference: {ngss_ref}
@@ -74,10 +75,10 @@ Provide a complete CER response that meets the Exceeding level:
 - No part of the response should come directly from the stimulus unless it’s data being cited
 """
 
-MC_PROMPT = """# MULTIPLE CHOICE (MC) ITEM PROMPT #
-
+MC_PROMPT = """#
 # CONTEXT #
-You are creating a multiple-choice (MC) science assessment item for grade {grade}, grounded in the 3D NGSS framework (DCI, SEP, CCC) and aligned to the Depth of Knowledge (DOK) level appropriate for that grade.
+You are creating a multiple-choice (MC) science assessment item for grade {grade}, 
+grounded in the 3D NGSS framework (DCI, SEP, CCC) and aligned to the Depth of Knowledge (DOK) level appropriate for the grade.
 
 ## 1. References (for item creation only)
 1.1. 3D NGSS Reference: {ngss_ref}  
@@ -179,8 +180,10 @@ C) Herons don’t eat algae; this is not supported by the food chain.
 D) Water levels are unrelated to food web interactions in this context.
 """
 
-MS_PROMPT = """# CONTEXT #
-You are creating a set of science assessment items for grade {grade}, grounded in the 3D NGSS framework (DCI, SEP, CCC) and tailored to the Depth of Knowledge (DOK) levels appropriate to {grade}.
+MS_PROMPT = """
+# CONTEXT #
+You are an expert in designing a Multiple-Select (MS) science assessment item for grade {grade}, 
+grounded in the 3D NGSS framework (DCI, SEP, CCC) and tailored to the Depth of Knowledge (DOK) levels appropriate to {grade}.
 
 1. References (for prompt context only)  
 1.1. 3D NGSS Reference: {ngss_ref}  
@@ -227,8 +230,7 @@ You are creating a set of science assessment items for grade {grade}, grounded i
 - Follow all distractor design and stimulus clarity rules.
 """
 
-EBSR_PROMPT = """#EVIDENCE-BASED SELECTED RESPONSE (EBSR) ITEM PROMPT#
-
+EBSR_PROMPT = """
 #CONTEXT#
 You are designing an Evidence-Based Selected Response (EBSR) science item cluster for Grade {grade}, aligned to the 3D NGSS framework (DCI, SEP, CCC) and the appropriate Depth of Knowledge (DOK) levels.
 
@@ -345,15 +347,19 @@ Part 2 – Item 4: MC – Application
 - Misinterpretation of models or stimulus
 """
 
+TE_SUBTYPES = """
+- Drag-and-Drop
+- Hot Spot (click to identify)
+- Inline Choice (dropdown)
+- Graphing or Model Construction
+"""
+
 TE_PROMPT = """
 # CONTEXT
 You are creating a Technology-Enhanced (TE) science assessment item set for Grade {grade}, grounded in the 3D NGSS framework (DCI, SEP, CCC) and aligned to the Depth of Knowledge (DOK) level appropriate for that grade.
 
 Each standard provided below must have one TE item for each of the following interaction subtypes:
-- Drag-and-Drop
-- Hot Spot (click to identify)
-- Inline Choice (dropdown)
-- Graphing or Model Construction
+{te_type}
 
 This will result in 4 items per standard.
 
@@ -432,4 +438,232 @@ For each standard:
 - Create 4 items using the format above
 - Number each sequentially (e.g., Item 1, Item 2, ...)
 - All items must share a common phenomenon but focus on different reasoning tasks
+"""
+
+CLUSTER_PROMPT = """
+You are designing a cluster science assessment item for **{{grade}}**, grounded in the **3D NGSS framework** (DCI, SEP, CCC). The cluster integrates multiple item types (e.g., MC, MS, TE) around a coherent phenomenon or real-world scenario, and must reflect three-dimensional learning through clear **DCI**, **SEP**, and **CCC** alignment.
+
+## REFERENCES (for item creation only)
+
+- **3D NGSS Reference**: {{ngss_ref}}
+- **DOK Levels Reference**: {{dok_ref}}
+
+## CONTENT HIERARCHY
+
+- **Standard**: {{standard}}
+- **What Students Will Do**: {{will_do}}
+
+## PRELIMINARY WORK
+
+- Review the standard and Will Do.
+- Identify 1–2 core scientific skills students need to demonstrate.
+- Ensure these skills reflect DCI, SEP, CCC, and an appropriate DOK level.
+
+---
+
+## FORMATTING REQUIREMENTS
+
+### General Format
+
+Each item must be structured as follows:
+
+Item X.1:
+Type: [MC | MS | TE]
+Standard: [Code]
+DCI: [Code] – [Short Description + Justification]
+SEP: [Code] – [Short Description + Justification]
+CCC: [Code] – [Short Description + Justification]
+DOK: [Level] – [Brief Reason]
+Prompt: [Full item prompt]
+Correct Answer: [Key or Rubric]
+Rationale: [1–3 sentences]
+
+---
+
+### 1. Multiple Choice (MC)
+
+**Format**
+Item X: MC: [Standard Code]
+DCI: [DCI Code and Description]
+Justification: [How this DCI is demonstrated by student thinking]
+SEP: [SEP Code and Short Name]
+Justification: [How this SEP is required by the task]
+CCC: [CCC Code and Short Name]
+Justification: [How this CCC shapes student reasoning]
+DOK Level: [1 or 2]
+Justification: [Why the thinking aligns to this DOK level]
+Stimulus:
+[A brief scenario introducing a real-world phenomenon]
+Visual Description: [Describe diagram/model/graph if used; optional if no visual]
+Question:
+[One clear question]
+A) [Option A]
+B) [Option B]
+C) [Option C]
+D) [Option D]
+Answer: [Letter]
+
+Rationale for each choice:
+[Letter]) [Scientific justification or explanation of reasoning or misconception]
+
+Rules:
+- Must assess reasoning or application, not recall.
+- Use a real-world phenomenon as the stimulus.
+- Visuals (if present) must support reasoning; describe in "Visual Description" (optional if not used).
+- Language must be grade-appropriate and clear.
+- Provide a rationale for every option, not labeled as "correct" or "incorrect."
+- Distractors must reflect common misconceptions, SEP/CCC-aligned flawed logic, or misinterpretation of the stimulus/model.
+
+---
+
+### 2. Multiple Select (MS)
+
+**Format**
+Item X: MS: [Standard Code]
+DCI: [DCI Code and Description]
+Justification: [How this DCI is demonstrated]
+SEP: [SEP Code and Short Name]
+Justification: [How this SEP is required]
+CCC: [CCC Code and Short Name]
+Justification: [How this CCC shapes reasoning]
+DOK Level: [2 or 3]
+Justification: [Why the thinking required aligns to this DOK level]
+Stimulus:
+[A brief scenario introducing a real-world phenomenon]
+Visual Description: [Describe diagram/model/graph if used; optional if no visual]
+Question:
+[One clear question]
+A) [Option A]
+B) [Option B]
+C) [Option C]
+D) [Option D]
+E) [Option E]
+Answer(s): [Letters]
+Rationale for each choice:
+[Letter]) [Scientific justification for correct answers or explanation of misconception/flawed reasoning for incorrect answers]
+
+Guidelines:
+- Emphasize reasoning and evidence-based thinking.
+- Avoid recall-only or trick questions.
+- Use authentic phenomena and grade-level language.
+- Include five choices, with at least two correct.
+- Provide a rationale for every option (not labeled as "correct" or "incorrect").
+- Distractors must reflect misconceptions, SEP/CCC errors, or stimulus/model misinterpretation.
+
+---
+
+### 3. Technology-Enhanced (TE)
+
+#### 4.1. Item Header
+Item X: TE - [Interaction Type]: [Standard Code]
+DCI: [Code] – [Description]
+SEP: [Code] – [Short Name]
+Justification: [How this SEP is required]
+CCC: [Code] – [Short Name]
+Justification: [How this CCC shapes reasoning]
+DOK Level: [2 or 3]
+Justification: [Why the thinking aligns to this DOK level]
+
+#### 4.2. Stimulus
+Phenomenon or Scenario (3–4 sentences):
+- Describe an event or observation (not the explanation).
+- Must be student-friendly and relatable.
+- Should prompt modeling, analysis, or explanation.
+- Use second-person or third-person voice.
+- Include all necessary information.
+Visual Description (if applicable):
+- Describe layout, labels, and interactive elements in detail.
+- Reads like a simulation specification.
+- Do not assume prior knowledge to interpret.
+
+#### 4.3. Task Prompt
+Align the prompt with the **interaction type**:
+- Drag-and-Drop: "Drag each label to the correct part of the system to show…"
+- Hot Spot: "Click on the part of the diagram/system that shows…"
+- Inline Choice: "Use the dropdowns to complete the explanation/model that best describes…"
+- Graphing: "Plot the data from the table to show…"
+Be explicit about required actions; reasoning should align to SEP and CCC.
+
+#### 4.4. Correct Response and Scoring
+- Correct Response Criteria: Clearly state what a correct interaction should look like.
+- Scoring Rule: Explain how full/partial credit is awarded.
+- Scientific Rationale: Justify the correct answer using DCI, SEP, and CCC.
+- Distractor Rationale: Identify likely incorrect choices and explain reasoning errors.
+
+---
+
+## ITEM TYPE CONSTRAINTS
+
+| Item Type | Format | DOK | Constraints |
+|-----------|--------|-----|-------------|
+| MC | 4 options, 1 correct | 1–2 | Rationales for all options. Based on reasoning. |
+| MS | 5 options, ≥2 correct (not all) | 2–3 | Each correct choice must be justifiable. |
+| TE | Drag-and-Drop, Hot Spot, Inline Choice, Graphing | 2–3 | Must include visuals; define correct interactions. |
+
+---
+
+## STRUCTURE OF CLUSTER ITEMS
+
+- One central phenomenon or scenario
+- 4–6 items (varied types: MC, MS, TE)
+- Sequence items to progressively build cognitive demand (e.g., analyze → model → explain)
+- Each item must align to at least two NGSS dimensions (DCI, SEP, CCC)
+- Use visuals or simulations as appropriate
+
+---
+
+## ITEM DESIGN PRIORITIES
+
+- Scaffold reasoning across the cluster
+- Use real-world phenomena
+- Support accessibility and diverse learners
+- Keep prompts non-redundant and tightly aligned
+- Ensure internal coherence and progressive cognitive demand
+
+## Output Format
+
+Cluster items must be output in **strict JSON format** as a list of item objects. The schema for each item should be as follows:
+
+{
+  "item_id": "X.1",
+  "type": "MC" | "MS" | "TE",
+  "standard": "[NGSS Code]",
+  "dci": {
+    "code": "[DCI Code]",
+    "description": "[Short description]",
+    "justification": "[How DCI is demonstrated]"
+  },
+  "sep": {
+    "code": "[SEP Code]",
+    "name": "[SEP Name]",
+    "justification": "[How SEP is required]"
+  },
+  "ccc": {
+    "code": "[CCC Code]",
+    "name": "[CCC Name]",
+    "justification": "[How CCC shapes reasoning]"
+  },
+  "dok": {
+    "level": 1 | 2 | 3,
+    "justification": "[Why this level is assigned]"
+  },
+  "stimulus": "[Real-world scenario]",
+  "visual_description": "[Optional. Describe any associated visual or simulation]",
+  "question": "[Full item question prompt]",
+  "options": [
+    { "label": "A", "text": "[Text]", "rationale": "[Rationale]" },
+    { "label": "B", "text": "[Text]", "rationale": "[Rationale]" },
+    ...
+  ],
+  "answer": "[Letter]" | ["Letter1", "Letter2"],
+  "scoring_rule": "[Describe how points are awarded, if applicable]",
+  "scientific_rationale": "[Rationale for correct answer(s)]",
+  "distractor_rationale": [
+    { "label": "A", "explanation": "[Reasoning error or misconception]" },
+    ...
+  ],
+  "interaction_type": "[Only for TE: drag-and-drop | hot spot | inline choice | graphing]"
+}
+
+All items must adhere to this schema for automated processing and validation. Error handling for missing rationales, incorrect number of options, or DOK misalignment must be addressed before finalization.
 """
