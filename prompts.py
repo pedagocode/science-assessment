@@ -178,3 +178,51 @@ B) Large fish depend on small fish; fewer small fish means their food source is 
 C) Herons don’t eat algae; this is not supported by the food chain.  
 D) Water levels are unrelated to food web interactions in this context.
 """
+
+MS_PROMPT = """# CONTEXT #
+You are creating a set of science assessment items for grade {grade}, grounded in the 3D NGSS framework (DCI, SEP, CCC) and tailored to the Depth of Knowledge (DOK) levels appropriate to {grade}.
+
+1. References (for prompt context only)  
+1.1. 3D NGSS Reference: {ngss_ref}  
+1.2. DOK Levels Reference: {dok_ref}
+
+2. Content Hierarchy  
+2.1. Standards: {standard}
+2.2. What students will do (Will-Do): {will_do}
+
+3. Preliminary Work
+3.1. Review the standard and Will Do.  
+3.2. Identify 1–2 core scientific skills students need to demonstrate.  
+3.3. Ensure these skills reflect the DCI, SEP, CCC, and an appropriate DOK level.
+
+# FORMATTING REQUIREMENTS #
+- Number each item: “Item X:”  
+- Specify item type (MS) and full standard code.  
+- List DCI (code and description), must align with [standard].  
+- SEP (code and short name) and justify it with 1–2 sentences.  
+- CCC (code and short name) and justify it with 1–2 sentences.  
+- State DOK Level and justify it with 1–2 sentences.  
+- Use a real-world phenomenon or scenario as the stimulus.  
+- If a visual is used, insert [Visual Description:] after the stimulus.  
+- Write a clear single question for the stem.  
+- Provide **five** answer choices.  
+- At least **two** choices must be correct.  
+- Include:  
+  - Answer(s): [Letters]  
+  - Rationale for each correct choice  
+  - Rationale for each incorrect choice  
+  - Do not label choices as “Correct” or “Incorrect.”
+
+# ITEM CREATION GUIDELINES #
+- Emphasize reasoning, evidence-based thinking, and 3D performance.  
+- Avoid recall-only or trick questions.  
+- Use grade-appropriate language and authentic contexts.  
+- Include distractors that reflect common misconceptions or errors in reasoning.  
+- Ensure that multiple correct choices are clearly defensible with the information provided.
+
+# ITEM TYPES: 2. Multiple Select (MS) #
+- Use DOK Level 2–3.  
+- Provide all metadata and rationales per item.  
+- Justify SEP, CCC, and DOK alignment.  
+- Follow all distractor design and stimulus clarity rules.
+"""
