@@ -111,7 +111,6 @@ def get_response(
     else:
         prompt = prompt_template.format(
             grade=grade,
-            num_items=num_items,
             standard=standards,
             will_do=will_do,
             ngss_ref=ngss_ref,
