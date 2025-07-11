@@ -99,23 +99,14 @@ def get_response(
         prompt_template = TE_PROMPT
     else:
         prompt_template = ''
-    if item_type == "Technology Enhanced":
-        prompt = prompt_template.format(
-            grade=grade,
-            ngss_ref=ngss_ref,
-            dok_ref=dok_ref,
-            standard=standards,
-            will_do=will_do,
-            te_type=te_type,
-        )
-    else:
-        prompt = prompt_template.format(
-            grade=grade,
-            standard=standards,
-            will_do=will_do,
-            ngss_ref=ngss_ref,
-            dok_ref=dok_ref,
-        )
+    prompt = prompt_template.format(
+        grade=grade,
+        ngss_ref=ngss_ref,
+        dok_ref=dok_ref,
+        standard=standards,
+        will_do=will_do,
+        te_type=te_type,
+    )
     response = openai.chat.completions.create(
         model="gpt-4.1-mini",
         messages=[
@@ -249,7 +240,7 @@ else:
                             doc.add_paragraph(line)
                     # 2 MS
                     with st.spinner(f"Generating Cluster {cluster_num} Items 3–4 (MS)..."):
-                        for i in range(2):
+                        for _ in range(2):
                             batch_ms = get_response(
                                 grade, "Multiple Select", standards, will_do
                             )
