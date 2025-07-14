@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 import openai
 import pandas as pd
 
-from prompts import CR_PROMPT, MC_PROMPT
+from prompts import CR_PROMPT, MC_PROMPT, MS_PROMPT, EBSR_PROMPT, TE_PROMPT
 
 # Setup logging
 logging.basicConfig(level=logging.INFO)
@@ -81,9 +81,9 @@ def load_references(grade: str) -> tuple[str, str, str]:
 def get_response(
     grade: str,
     item_type: str,
-    num_items: int,
     standards: str,
     will_do: str,
+    te_type: str = None
 ) -> str:
     """Generate assessment content using the OpenAI GPT-4o model with updated prompt."""
     ngss_ref, dok_ref = load_references(grade)
@@ -91,16 +91,21 @@ def get_response(
         prompt_template = CR_PROMPT
     elif item_type == "Multiple Choice":
         prompt_template = MC_PROMPT
+    elif item_type == "Multiple Select":
+        prompt_template = MS_PROMPT
+    elif item_type == "Evidence-Based":
+        prompt_template = EBSR_PROMPT
+    elif item_type == "Technology Enhanced":
+        prompt_template = TE_PROMPT
     else:
         prompt_template = ''
-
     prompt = prompt_template.format(
         grade=grade,
-        num_items=num_items,
-        standard=standards,
-        will_do=will_do,
         ngss_ref=ngss_ref,
         dok_ref=dok_ref,
+        standard=standards,
+        will_do=will_do,
+        te_type=te_type,
     )
     response = openai.chat.completions.create(
         model="gpt-4.1-mini",
@@ -226,17 +231,19 @@ else:
                 for cluster_num in range(1, num_items + 1):
                     # 2 MC
                     with st.spinner(f"Generating Cluster {cluster_num} Items 1–2 (MC)..."):
-                        batch_mc = get_response(
-                            grade, unit, "MC", 2, standards, will_do, "", item_start=1, item_end=2, batch_num=1, te_type=""
-                        )
+                        for _ in range(2):
+                            batch_mc = get_response(
+                                grade, "Multiple Choice", standards, will_do
+                            )
                         all_results += batch_mc + "\n\n"
                         for line in batch_mc.split("\n"):
                             doc.add_paragraph(line)
                     # 2 MS
                     with st.spinner(f"Generating Cluster {cluster_num} Items 3–4 (MS)..."):
-                        batch_ms = get_response(
-                            grade, unit, "MS", 2, standards, will_do, "", item_start=3, item_end=4, batch_num=2, te_type=""
-                        )
+                        for _ in range(2):
+                            batch_ms = get_response(
+                                grade, "Multiple Select", standards, will_do
+                            )
                         all_results += batch_ms + "\n\n"
                         for line in batch_ms.split("\n"):
                             doc.add_paragraph(line)
@@ -245,22 +252,22 @@ else:
                     for i, te_subtype in enumerate(te_types):
                         with st.spinner(f"Generating Cluster {cluster_num} Item {5+i} (TE{te_subtype})..."):
                             batch_te = get_response(
-                                grade, unit, "TE", 1, standards, will_do, "", item_start=5+i, item_end=5+i, batch_num=3+i, te_type=te_subtype
+                                grade, "Technology Enhanced", standards, will_do, te_type=te_subtype
                             )
                             all_results += batch_te + "\n\n"
                             for line in batch_te.split("\n"):
                                 doc.add_paragraph(line)
                     # 2 random (MC, MS, or TE)
                     import random
-                    random_types = ["MC", "MS", "TE"]
+                    random_types = ["Multiple Choice", "Multiple Select", "Technology Enhanced"]
                     for i in range(7, 9):
                         rand_type = random.choice(random_types)
                         te_type_val = ""
-                        if rand_type == "TE":
+                        if rand_type == "Technology Enhanced":
                             te_type_val = random.choice([" - Drag-and-Drop", " - Hot-Spot", " - Inline-Choice", " - Graphing"])
                         with st.spinner(f"Generating Cluster {cluster_num} Item {i} (Random: {rand_type}{te_type_val})..."):
                             batch_rand = get_response(
-                                grade, unit, rand_type, 1, standards, will_do, "", item_start=i, item_end=i, batch_num=5+i, te_type=te_type_val
+                                grade, rand_type, standards, will_do, te_type=te_type_val
                             )
                             all_results += batch_rand + "\n\n"
                             for line in batch_rand.split("\n"):
@@ -271,18 +278,18 @@ else:
                 for ebsr_num in range(1, num_items + 1):
                     with st.spinner(f"Generating EBSR Set {ebsr_num}..."):
                         ebsr_result = get_response(
-                            grade, unit, item_type, 1, standards, will_do, ""
+                            grade, item_type, standards, will_do
                         )
                         all_results += ebsr_result + "\n\n"
                         for line in ebsr_result.split("\n"):
                             doc.add_paragraph(line)
                 file_name = f"{grade} {unit} {item_type} Sets.docx"
-            elif item_type in ["Constructed Response", "Multiple Choice"]:
+            elif item_type in ["Constructed Response", "Multiple Choice", "Multiple Select", "Technology Enhanced"]:
                 status_placeholder.info(f"Generating {item_type} items...")
                 for cr_num in range(1, num_items + 1):
                     with st.spinner(f"Generating {item_type} Item {cr_num}..."):
                         cr_result = get_response(
-                            grade, item_type, 1, standards, will_do
+                            grade, item_type, standards, will_do
                         )
                         all_results += cr_result + "\n\n"
                         for line in cr_result.split("\n"):
@@ -296,7 +303,7 @@ else:
                 while current <= total:
                     end = min(current + batch_size - 1, total)
                     batch_result = get_response(
-                        grade, unit, item_type, end - current + 1, standards, will_do, ""
+                        grade, item_type, standards, will_do
                     )
                     all_results += batch_result + "\n\n"
                     for line in batch_result.split("\n"):
