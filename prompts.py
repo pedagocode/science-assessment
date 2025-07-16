@@ -45,6 +45,7 @@ Create a real-world, observable, and puzzling phenomenon described in 3–5 sent
 - Avoid including or hinting at the claim or reasoning
 - Include a data table, diagram, graph, or short passage with clearly labeled variables or observations
 - Use a student-friendly tone and developmentally appropriate language, avoiding technical jargon unless appropriate for the grade
+- Ensure all student-facing text falls within the Lexile range of 925–1185, maintains appropriate science vocabulary, and matches the reading level of grade {grade}.
 
 3. Constructed Response Prompt (CER-Aligned)
 Ask students to write a scientific explanation using the CER framework:
@@ -112,6 +113,7 @@ Justification: [1–2 sentences explaining why the thinking required aligns to t
 
 Stimulus:  
 [A brief 1–2 sentence scenario that introduces a real-world phenomenon or situation relevant to the standard]  
+[Ensure all student-facing text falls within the Lexile range of 925–1185, maintains appropriate science vocabulary, and matches the reading level of grade {grade}.]
 [Visual Description: Describe any diagram, graph, model, or visual used. If no visual is included, omit this line.]
 
 Question:  
@@ -134,6 +136,7 @@ Rationale for incorrect choice(s):
 - The item must assess reasoning or application, not recall.  
 - The stimulus must be grounded in a real-world or observable phenomenon.  
 - If a visual is included, it must serve a reasoning purpose (not decoration).  
+- Ensure all student-facing text falls within the Lexile range of 925–1185, maintains appropriate science vocabulary, and matches the reading level of grade {grade}.
 - All language must be grade-appropriate and free of jargon.  
 - Every answer option (A–D) must have a complete rationale.  
 - Do NOT label any rationale as “Correct” or “Incorrect.”  
@@ -220,6 +223,7 @@ grounded in the 3D NGSS framework (DCI, SEP, CCC) and tailored to the Depth of K
 - Emphasize reasoning, evidence-based thinking, and 3D performance.  
 - Avoid recall-only or trick questions.  
 - Use grade-appropriate language and authentic contexts.  
+- Ensure all student-facing text falls within the Lexile range of 925–1185, maintains appropriate science vocabulary, and matches the reading level of grade {grade}.
 - Include distractors that reflect common misconceptions or errors in reasoning.  
 - Ensure that multiple correct choices are clearly defensible with the information provided.
 
@@ -267,6 +271,7 @@ Write a 5–6 sentence paragraph describing a real-world, observable scientific 
 - Measurable changes or interactions
 - Relationships in systems, organisms, or environments
 - Enough detail to support claim and evidence reasoning (Items 1 and 2)
+- Ensure all student-facing text falls within the Lexile range of 925–1185, maintains appropriate science vocabulary, and matches the reading level of grade {grade}.
 
 If using a visual, include the following:
 
@@ -280,6 +285,7 @@ Write another 5–6 sentence paragraph that continues the scenario. This must:
 - Be clearly related but not identical to Part 1
 - Introduce a system change, human intervention, or environmental shift
 - Provide reasoning context for Items 3 and 4
+- Ensure all student-facing text falls within the Lexile range of 925–1185, maintains appropriate science vocabulary, and matches the reading level of grade {grade}.
 
 Include an updated Visual Description if needed (e.g., new conditions, populations, treatment areas, etc.).
 #ITEM FORMAT (USE FOR EACH ITEM)#
@@ -335,7 +341,7 @@ Part 2 – Item 4: MC – Application
 - Ask students to predict the outcome or evaluate the impact of a solution or change in Part 2. Aim for DOK 3–4.
 
 #ITEM WRITING RULES#
-1. Each stimulus must be 5–6 sentences
+1. Each stimulus must be 5–6 sentences. Ensure all student-facing text falls within the Lexile range of 925–1185, maintains appropriate science vocabulary, and matches the reading level of grade {grade}.
 2. Visuals must support reasoning and be described with precision
 3. All MC and MS items must include:
 - DCI, SEP, CCC, and DOK metadata with 1–2 sentence justifications
@@ -376,7 +382,8 @@ This will result in 4 items per standard.
 2. Select 1 real-world phenomenon or system per standard that lends itself to all 4 TE subtypes
 3. Map each interaction type to a reasoning task aligned to the standard and DOK level
 4. For each interaction type, ensure the task emphasizes 3D NGSS integration and results in a clearly scorable output
-5. Use phenomena, simulations, or diagrams that are grade-appropriate and instructionally meaningful
+5. Use phenomena, simulations, or diagrams that are grade-appropriate and instructionally meaningful.
+6. Ensure all student-facing text falls within the Lexile range of 925–1185, maintains appropriate science vocabulary, and matches the reading level of grade {grade}.
 
 ---
 
@@ -395,6 +402,7 @@ This will result in 4 items per standard.
 4.2. Stimulus
 1. Phenomenon or Scenario: Write a 3–4 sentence stimulus that introduces the phenomenon in a relatable, real-world context. The writing should:
 - Be student-friendly and grade-appropriate
+- Ensure all student-facing text falls within the Lexile range of 925–1185, maintains appropriate science vocabulary, and matches the reading level of grade {grade}.
 - Describe a simple event or observation involving the phenomenon, not the explanation.
 - Reflect everyday experiences, classroom labs, or media-based curiosity.
 - Avoid technical terms unless they appear naturally (e.g., ‘carbon dioxide’ instead of ‘CO₂’ unless contextually relevant).
@@ -432,6 +440,7 @@ All four interaction types must be instructionally necessary and tied to the SEP
 - Visuals, simulations, or diagrams must be necessary for completing the task (not decorative)
 - Inline Choice items should never be vague; dropdowns must be embedded in rich context and scaffold reasoning
 - All items must be answerable using only the information provided in the stimulus and visual. Do not assume students have prior knowledge beyond what is introduced in the text or diagram
+- Ensure all student-facing text falls within the Lexile range of 925–1185, maintains appropriate science vocabulary, and matches the reading level of grade {grade}.
 
 6. REPEAT FOR EACH STANDARD
 For each standard:
